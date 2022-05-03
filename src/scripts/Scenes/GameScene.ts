@@ -9,7 +9,12 @@ export default class GameScene extends Phaser.Scene {
       key: 'GameScene',
     });
   }
-
+  //Add background (place holder)
+  //Add the player's sprite, and set its properties
+  //Add input for player's actions
+  //Add emeny's sprite
+  //adding interactions bewteen player's sprite and objects
+  //adding game play features(timer,score,text,mini games)
   preload() {
     this.load.image('spraycan', new URL('../../assets/spraycan.png', import.meta.url).href);
   }
