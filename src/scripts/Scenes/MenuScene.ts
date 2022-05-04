@@ -10,7 +10,7 @@ export default class GameScene extends Phaser.Scene {
   preload() {
     this.load.image(
       'menu-scene-text',
-      new URL('../../assets/menu-scene-text.png', import.meta.url).href
+      //new URL('../../assets/menu-scene-text.png, import.meta.url).href
     );
   }
 
