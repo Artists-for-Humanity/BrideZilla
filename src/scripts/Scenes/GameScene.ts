@@ -17,14 +17,11 @@ export default class GameScene extends Phaser.Scene {
   }
 
   // pedestal for the bride, mannequins, window shop, 
-  // Modifing game scene size, and modfing object sizes
-  // adust the game hieght and width, adjust the background image
-  // adjust postion of two objects
-  // Set scale of game objects 
-  //adding game play features(timer,score,text,mini games)
+  //adding game play features(timer,score,text,mini games
+  //change game point of view
   preload() {
     this.load.image('player', new URL('../../assets/myPlayer.png', import.meta.url).href);
-    this.load.image('background', new URL('../../assets/background.png', import.meta.url).href);
+    this.load.image('background', new URL('../../assets/background5.png', import.meta.url).href);
     this.load.image('enemy', new URL('../../assets/myEnemy.png', import.meta.url).href);
     this.load.image('flower', new URL('../../assets/flower.png', import.meta.url).href);
     this.load.image('cake', new URL('../../assets/cake.png', import.meta.url).href);
@@ -32,16 +29,16 @@ export default class GameScene extends Phaser.Scene {
   }
 
   create() {
-    console.log("heyyyyyy");
+    console.log("hello");
     const gameWidth: number = this.game.config.width as number;
     const gameHeight: number = this.game.config.height as number;
     this.add.image(gameWidth / 2, gameHeight / 2, 'background');
     this.player = new Player(this, gameWidth / 2, gameHeight / 2);
     //this.player = this.physics.add.sprite(480, 360, 'player').setScale(.3, .3);
-    this.enemy = this.physics.add.sprite(160, 180, 'enemy').setScale(.3, .3);
-    this.shoes = this.physics.add.sprite(1140, 120, 'shoes').setScale(.1, .1);
-    this.cake = this.physics.add.sprite(1125, 600, 'cake').setScale(.4, .4);
-    this.flower = this.physics.add.sprite(85, 590, 'flower').setScale(.5, .5);
+    this.enemy = this.physics.add.sprite(260, 280, 'enemy').setScale(.2, .2);
+    this.shoes = this.physics.add.sprite(700, 200, 'shoes').setScale(.1, .1);
+    this.cake = this.physics.add.sprite(1125, 400, 'cake').setScale(.4, .4);
+    this.flower = this.physics.add.sprite(500, 640, 'flower').setScale(.3, .3);
     this.physics.add.collider(this.player, this.enemy, () => {
       console.log('i have reached the bride');
     });
