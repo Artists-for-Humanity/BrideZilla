@@ -16,6 +16,7 @@ export default class GameScene extends Phaser.Scene {
     });
   }
 
+  // pedestal for the bride, mannequins, window shop, 
   // Modifing game scene size, and modfing object sizes
   // adust the game hieght and width, adjust the background image
   // adjust postion of two objects
