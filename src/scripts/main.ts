@@ -19,7 +19,7 @@ const config = {
       debug: true,
     },
   },
-  scene: [GameScene, MenuScene],
+  scene: [MenuScene, GameScene],
   audio: {
     disableWebAudio: true,
   },
