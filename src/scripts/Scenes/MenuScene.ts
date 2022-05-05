@@ -27,7 +27,7 @@ export default class GameScene extends Phaser.Scene {
       fill: colors.white,
       align: 'center',
     }
-    this.start = this.add.image(gameWidth - 716, gameHeight - 310, 'start').setScale(.5, .5);
+    this.start = this.add.image(gameWidth - 955, gameHeight - 310, 'start').setScale(.68, .5);
     console.log(this.start);
     // this.start.setVisible(false);
     this.start.setInteractive();

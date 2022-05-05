@@ -2,6 +2,7 @@ import Phaser from 'phaser';
 
 export default class Player extends Phaser.Physics.Arcade.Sprite {
   cursors: any;
+  gameSpeed: any;
   constructor(scene, x, y) {
     super(scene, x, y, 'player');
 
@@ -10,23 +11,24 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     this.setCollideWorldBounds(true);
 
     this.cursors = scene.input.keyboard.createCursorKeys();
-    this.setScale(.4, .4);
+    this.setScale(.2, .2);
+    this.gameSpeed = 5;
 
     return this;
   }
 
   update() {
     if (this.cursors.left.isDown) {
-      this.x -= 5;
+      this.x -= this.gameSpeed;
     }
     if (this.cursors.right.isDown) {
-      this.x += 10;
+      this.x += this.gameSpeed;
     }
     if (this.cursors.up.isDown) {
-      this.y -= 10;
+      this.y -= this.gameSpeed;
     }
     if (this.cursors.down.isDown) {
-      this.y += 10;
+      this.y += this.gameSpeed;
     }
   }
 }

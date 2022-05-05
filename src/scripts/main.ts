@@ -5,7 +5,7 @@ import GameScene from './Scenes/GameScene';
 // Set configuration for phaser game instance
 const config = {
   type: Phaser.AUTO,
-  width: 960,
+  width: 1280,
   height: 720,
   backgroundColor: '#393a39',
 
@@ -19,7 +19,7 @@ const config = {
       debug: true,
     },
   },
-  scene: [MenuScene, GameScene],
+  scene: [GameScene, MenuScene],
   audio: {
     disableWebAudio: true,
   },
