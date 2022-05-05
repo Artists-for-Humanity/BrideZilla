@@ -23,7 +23,7 @@ export default class GameScene extends Phaser.Scene {
   //adding game play features(timer,score,text,mini games)
   preload() {
     this.load.image('player', new URL('../../assets/myPlayer.png', import.meta.url).href);
-    this.load.image('background', new URL('../../assets/mybackground.png', import.meta.url).href);
+    this.load.image('background', new URL('../../assets/background.png', import.meta.url).href);
     this.load.image('enemy', new URL('../../assets/myEnemy.png', import.meta.url).href);
     this.load.image('flower', new URL('../../assets/flower.png', import.meta.url).href);
     this.load.image('cake', new URL('../../assets/cake.png', import.meta.url).href);
@@ -31,7 +31,7 @@ export default class GameScene extends Phaser.Scene {
   }
 
   create() {
-    console.log("create");
+    console.log("heyyyyyy");
     const gameWidth: number = this.game.config.width as number;
     const gameHeight: number = this.game.config.height as number;
     this.add.image(gameWidth / 2, gameHeight / 2, 'background');
