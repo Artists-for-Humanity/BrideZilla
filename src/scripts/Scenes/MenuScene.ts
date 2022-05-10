@@ -14,7 +14,7 @@ export default class GameScene extends Phaser.Scene {
 
   }
 
-  //add an object for the start button 
+  //change the name of game
   create() {
 
     const gameWidth: number = this.game.config.width as number;

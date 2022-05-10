@@ -8,8 +8,6 @@ export default class GameScene extends Phaser.Scene {
   shoes;
   flower;
 
-  //sound; Phaser.Sound.NoAudioSoundManager | Phaser.Sound.HTML5AudioSoundManager | Phaser.Sound.WebAudioSoundManager;
-
   constructor() {
     super({
       key: 'GameScene',
@@ -33,15 +31,27 @@ export default class GameScene extends Phaser.Scene {
     const gameWidth: number = this.game.config.width as number;
     const gameHeight: number = this.game.config.height as number;
     this.add.image(gameWidth / 2, gameHeight / 2, 'background');
-    this.player = new Player(this, gameWidth / 2, gameHeight / 2);
-    //this.player = this.physics.add.sprite(480, 360, 'player').setScale(.3, .3);
-    this.enemy = this.physics.add.sprite(260, 280, 'enemy').setScale(.2, .2);
+    this.enemy = this.physics.add.sprite(260, 280, 'enemy').setScale(.2, .2).setImmovable(true);
+    this.physics.world.enable(this.enemy);
+    this.enemy.body.setImmovable(true);//this one
+
+
+
     this.shoes = this.physics.add.sprite(700, 200, 'shoes').setScale(.1, .1);
     this.cake = this.physics.add.sprite(1125, 400, 'cake').setScale(.4, .4);
     this.flower = this.physics.add.sprite(500, 640, 'flower').setScale(.3, .3);
+    this.player = new Player(this, gameWidth / 2, gameHeight / 2);
+
     this.physics.add.collider(this.player, this.enemy, () => {
-      console.log('i have reached the bride');
+      console.log('dogs are really awsome');
     });
+    // this.physics.add.collider(this.player, this.enemy);
+
+    // this.physics.add.collider(this.player, this.enemy);
+
+    //this.physics.arcade.collide(this.player, this.enemy);
+
+
     this.physics.add.collider(this.player, this.flower, () => {
       console.log('i have reached the flowers');
     });
