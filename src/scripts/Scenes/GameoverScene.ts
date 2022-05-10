@@ -9,7 +9,9 @@ export default class GameScene extends Phaser.Scene {
     });
   }
 
-  preload() { }
+  preload() {
+    this.load.image('gameover', new URL('../../assets/Gameoverscene.png', import.meta.url).href);
+  }
 
 
   create() { }
