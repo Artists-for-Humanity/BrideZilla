@@ -9,7 +9,7 @@ export default class GameScene extends Phaser.Scene {
   }
 
   preload() {
-    this.load.image('menuscreen', new URL('../../assets/menuscreen.png', import.meta.url).href);
+    this.load.image('menuscreen', new URL('../../assets/menuscene.png', import.meta.url).href);
     this.load.image('start', new URL('../../assets/start.png', import.meta.url).href);
 
   }
@@ -27,7 +27,7 @@ export default class GameScene extends Phaser.Scene {
       fill: colors.white,
       align: 'center',
     }
-    this.start = this.add.image(gameWidth - 955, gameHeight - 310, 'start').setScale(.68, .5);
+    this.start = this.add.image(gameWidth - 910, gameHeight - 365, 'start').setScale(.68, .5);
     console.log(this.start);
     // this.start.setVisible(false);
     this.start.setInteractive();

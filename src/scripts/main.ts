@@ -2,6 +2,11 @@ import Phaser from 'phaser';
 import MenuScene from './Scenes/MenuScene';
 import GameScene from './Scenes/GameScene';
 import GameOverScene from './Scenes/GameOverScene';
+import ShoeMiniGame from './Scenes/ShoeMiniGame';
+import CakeMiniGame from './Scenes/CakeMiniGame';
+import FlowerMiniGame from './Scenes/FlowerMiniGame';
+
+
 
 // Set configuration for phaser game instance
 const config = {
@@ -20,7 +25,7 @@ const config = {
       debug: true,
     },
   },
-  scene: [MenuScene, GameScene, GameOverScene],
+  scene: [MenuScene, GameScene, ShoeMiniGame, FlowerMiniGame, CakeMiniGame, GameOverScene],
   audio: {
     disableWebAudio: true,
   },
