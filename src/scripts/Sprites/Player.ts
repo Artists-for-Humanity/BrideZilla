@@ -13,7 +13,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
 
     this.cursors = scene.input.keyboard.createCursorKeys();
     this.setScale(.2, .2);
-    this.speed = 100;
+    this.speed = 105;
 
     return this;
   }

@@ -15,8 +15,11 @@ export default class GameScene extends Phaser.Scene {
   }
 
   // pedestal for the bride, mannequins, window shop, 
-  //adding game play features(timer,score,text,mini games
+  //adding game play features(score,text)
   //change game point of view
+  // set up timer
+  // Set up mini game scene 
+  // Set gameover scene place holder 
   preload() {
     this.load.image('player', new URL('../../assets/myPlayer.png', import.meta.url).href);
     this.load.image('background', new URL('../../assets/background5.png', import.meta.url).href);
