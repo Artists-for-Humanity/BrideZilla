@@ -20,8 +20,8 @@ export default class GameScene extends Phaser.Scene {
   //set up mini game
   //adding game play features(score,text)
   preload() {
-    this.load.image('player', new URL('../../assets/myPlayer.png', import.meta.url).href);
-    this.load.image('background', new URL('../../assets/background5.png', import.meta.url).href);
+    this.load.image('player', new URL('../../assets/myplayer.png', import.meta.url).href);
+    this.load.image('background', new URL('../../assets/myBackground.png', import.meta.url).href);
     this.load.image('enemy', new URL('../../assets/myEnemy.png', import.meta.url).href);
     this.load.image('flower', new URL('../../assets/flower.png', import.meta.url).href);
     this.load.image('cake', new URL('../../assets/cake.png', import.meta.url).href);
