@@ -1,5 +1,8 @@
 import Phaser from 'phaser';
 import Player from '../Sprites/Player';
+import {
+  colors
+} from '../constants';
 
 export default class GameScene extends Phaser.Scene {
   player;
@@ -7,6 +10,12 @@ export default class GameScene extends Phaser.Scene {
   cake;
   shoes;
   flower;
+  text;
+  timeLimit = 300;
+  activeTime = false;
+  currentTime = 0;
+  gameOver = false;
+
 
   constructor() {
     super({
@@ -14,11 +23,7 @@ export default class GameScene extends Phaser.Scene {
     });
   }
 
-  // pedestal for the bride, mannequins, window shop, 
-  //set up timer
-  //Set game over scence placeholder
-  //set up mini game
-  //adding game play features(score,text)
+
   preload() {
     this.load.image('player', new URL('../../assets/myplayer.png', import.meta.url).href);
     this.load.image('background', new URL('../../assets/myBackground.png', import.meta.url).href);
@@ -39,6 +44,19 @@ export default class GameScene extends Phaser.Scene {
     this.flower = this.physics.add.sprite(500, 640, 'flower').setScale(.3, .3).setImmovable(true);
     this.player = new Player(this, gameWidth / 2, gameHeight / 2);
 
+    this.text = this.add.text(50, 50, 'timer: ', {
+      fontFamily: 'Luminari Regular',
+      fontSize: '30px',
+      // fill: '#000000',
+      align: 'center',
+      fontStyle: 'normal',
+      stroke: '#000000',
+      strokeThickness: 8,
+      shadow: {
+        blur: 42
+      }
+    });
+
     this.physics.add.collider(this.player, this.enemy, () => {
       console.log('Brides are really awsome');
     });
@@ -56,7 +74,42 @@ export default class GameScene extends Phaser.Scene {
     });
   }
 
-  update() {
+  update(time, delta) {
+    this.currentTime += delta;
+
+    //console.log('time: ' + time, 'delta: ' + delta)
     this.player.update();
+    this.timer();
+    this.setScoreText();
+    this.gameIsOver();
+  }
+
+  setScoreText() {
+    // console.log('hello')
+    this.text.setText('Time: ' + this.timeLimit)
+  }
+  gameIsOver() {
+    if (this.timeLimit === 0) {
+      this.gameOver = true;
+    }
+    if (this.gameOver) {
+      this.scene.start('GameOverScene');
+
+    }
+  }
+
+  timer() {
+    if (this.activeTime === false) {
+      console.log('timeLimit:' + this.timeLimit);
+      this.timeLimit -= 1;
+      // this.setScoreText();
+      this.activeTime = true;
+      this.currentTime = 0;
+    }
+    if (this.activeTime === true && this.currentTime > 1000) {
+      this.currentTime -= 1000;
+      this.activeTime = false;
+    }
+
   }
 }

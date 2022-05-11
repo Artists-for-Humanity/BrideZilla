@@ -1,11 +1,11 @@
 import Phaser from 'phaser';
 import Player from '../Sprites/Player';
 
-export default class GameScene extends Phaser.Scene {
+export default class GameOverScene extends Phaser.Scene {
 
   constructor() {
     super({
-      key: 'GameScene',
+      key: 'GameOverScene',
     });
   }
 
@@ -14,7 +14,11 @@ export default class GameScene extends Phaser.Scene {
   }
 
 
-  create() { }
+  create() {
+    const gameWidth: number = this.game.config.width as number;
+    const gameHeight: number = this.game.config.height as number;
+    this.add.image(gameWidth / 2, gameHeight / 2, 'gameover');
+  }
 
 
 
