@@ -2,7 +2,8 @@ import Phaser from 'phaser';
 
 export default class Player extends Phaser.Physics.Arcade.Sprite {
   cursors: any;
-  gameSpeed: any;
+  speed: number;
+
   constructor(scene, x, y) {
     super(scene, x, y, 'player');
 
@@ -12,23 +13,31 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
 
     this.cursors = scene.input.keyboard.createCursorKeys();
     this.setScale(.2, .2);
-    this.gameSpeed = 5;
+    this.speed = 100;
 
     return this;
   }
 
+
   update() {
+    let xSpeed = 0;
     if (this.cursors.left.isDown) {
-      this.x -= this.gameSpeed;
+      xSpeed = -1 * this.speed;
+    } else if (this.cursors.right.isDown) {
+      xSpeed = this.speed;
+    } else {
+      xSpeed = 0
     }
-    if (this.cursors.right.isDown) {
-      this.x += this.gameSpeed;
-    }
+
+    let ySpeed = 0;
     if (this.cursors.up.isDown) {
-      this.y -= this.gameSpeed;
+      ySpeed = -1 * this.speed;
+    } else if (this.cursors.down.isDown) {
+      ySpeed = this.speed;
+    } else {
+      ySpeed = 0
     }
-    if (this.cursors.down.isDown) {
-      this.y += this.gameSpeed;
-    }
+
+    this.setVelocity(xSpeed, ySpeed);
   }
 }
