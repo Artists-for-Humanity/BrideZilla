@@ -3,8 +3,10 @@ import Player from '../Sprites/Player';
 
 export default class FlowerMiniGame extends Phaser.Scene {
   flowerstem;
-  flowerpetal;
+  flowerpetals;
+  // flowerpetal;
   flowerbud;
+  numPetals = 5;
   constructor() {
     super({
       key: 'FlowerMiniGame',
@@ -12,10 +14,12 @@ export default class FlowerMiniGame extends Phaser.Scene {
   }
 
   preload() {
-    this.load.image('flowerMiniGame', new URL('../../assets/flowerminigamebg.png', import.meta.url).href);
-    this.load.image('stem', new URL('../../assets/stem.png', import.meta.url).href);
-    this.load.image('petal', new URL('../../assets/petal.png', import.meta.url).href);
-    this.load.image('flowerbud', new URL('../../assets/flowerbud.png', import.meta.url).href);
+    this.load.image('flowerMiniGame', new URL('../../assets/flowerminigamebg.png',
+      import.meta.url).href);
+    this.load.image('petal', new URL('../../assets/petal.png',
+      import.meta.url).href);
+    this.load.image('flowerbud', new URL('../../assets/flowerbud.png',
+      import.meta.url).href);
 
 
   }
@@ -25,12 +29,16 @@ export default class FlowerMiniGame extends Phaser.Scene {
     const gameWidth: number = this.game.config.width as number;
     const gameHeight: number = this.game.config.height as number;
     this.add.image(gameWidth / 2, gameHeight / 2, 'flowerMiniGame');
+    this.flowerpetals = this.physics.add.group();
+    this.setFlowerPetals();
     //this.load.image('stem', new URL('../../assets/stem.png', import.meta.url).href);
-    this.flowerstem = this.add.image(500, 400, 'stem');
-    this.flowerpetal = this.add.image(500, 250, 'petal').setScale(.2, .2);
-    this.flowerbud = this.add.image(500, 300, 'flowerbud');
-
-
+    // this.flowerpetal = this.add.image(640, 250, 'petal').setScale(.2, .2);
+    this.flowerbud = this.add.image(640, 300, 'flowerbud');
+    // this.flowerpetal.rotation += 1;
+    console.log(this.flowerpetals);
+    // this.input.setDraggable(this.flowerpetals);
+    // this.flowerpetals.input.draggable = true;
+    console.log('I did not break')
 
 
 
@@ -38,4 +46,40 @@ export default class FlowerMiniGame extends Phaser.Scene {
 
 
   update() { }
+
+  setFlowerPetals() {
+    let x = 640;
+    let y = 250;
+    let r = 0;
+    for (let i = 0; i < this.numPetals; i++) {
+
+      if (i === 1) {
+        console.log('hey 00: ' + x + ' ' + y, i);
+        r = 1;
+        x += 50;
+        y += 35;
+      }
+
+      if (i === 2) {
+        console.log('hey 01', x, y, i);
+        r = 2;
+        x -= 15;
+        y += 50;
+      }
+      if (i === 3) {
+        console.log('hey 02', x, y, i);
+        r = 3.5;
+        x -= 50;
+        y -= 5;
+      }
+      if (i === 4) {
+        console.log('hey 03', x, y, i);
+        r = 5;
+        x -= 20;
+        y -= 50;
+      }
+      this.flowerpetals.create(x, y, 'petal').setScale(.2, .2).rotation += r;
+
+    }
+  }
 }
