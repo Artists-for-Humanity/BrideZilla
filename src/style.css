@@ -2,6 +2,8 @@
 body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;    
     color: black;
+    background-color: #F9C4CF;
+    border: 20px solid #ff7492;
 }
 
 img {
@@ -21,12 +23,10 @@ p {
     flex-direction: column;
     align-items: center;
     padding-bottom: 60px;
-    background-color: rgb(178, 204, 214);
 }
 
 .header-title {
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: 75px;
+padding: 40px; 
 }
 
 .nav-container {
@@ -35,7 +35,7 @@ p {
 }
 
 .nav-btn {
-    font-size: 26px;
+    font-size: 25px;
     color: black;
     text-decoration: none;
 }
@@ -51,7 +51,9 @@ p {
 /* HOME */
 .home-content {
     display: flex;
-    gap: 40px;
+    flex-direction: row;
+    justify-content: space-evenly;
+    justify-items: center;
 }
 
 .home-header {
@@ -82,3 +84,22 @@ p {
     font-size: 25px;
     text-align: center;
 }
+
+.game-body {
+    display: flex; 
+    justify-content: space-evenly;
+
+    color: white
+
+
+
+}
+
+.how-to{
+    background-color: #ff7492;
+    padding: 20px
+}
+.game-play{
+    padding: 20px
+}
+
