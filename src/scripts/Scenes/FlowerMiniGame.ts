@@ -10,6 +10,7 @@ export default class FlowerMiniGame extends Phaser.Scene {
   constructor() {
     super({
       key: 'FlowerMiniGame',
+
     });
   }
 
@@ -20,6 +21,7 @@ export default class FlowerMiniGame extends Phaser.Scene {
       import.meta.url).href);
     this.load.image('flowerbud', new URL('../../assets/flowerbud.png',
       import.meta.url).href);
+
 
 
   }
@@ -38,7 +40,24 @@ export default class FlowerMiniGame extends Phaser.Scene {
     console.log(this.flowerpetals);
     // this.input.setDraggable(this.flowerpetals);
     // this.flowerpetals.input.draggable = true;
-    console.log('I did not break')
+    console.log('I did not something ');
+    // this.flowerpetals.setInteractive();
+
+    this.flowerpetals.getChildren().forEach(function (petal) {
+      // petal.setInteractive();
+      console.log(petal);
+      // this.scene.input.setDraggable(petal);
+      petal.setInteractive({ draggable: true });
+
+      // petal.input.draggable = true;
+
+    });
+    this.input.on('drag', function (pointer, gameObject, dragX, dragY) {
+
+      gameObject.x = dragX;
+      gameObject.y = dragY;
+
+    });
 
 
 
@@ -46,6 +65,7 @@ export default class FlowerMiniGame extends Phaser.Scene {
 
 
   update() { }
+
 
   setFlowerPetals() {
     let x = 640;
