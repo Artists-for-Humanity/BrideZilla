@@ -10,11 +10,13 @@ export default class GameScene extends Phaser.Scene {
   cake;
   shoes;
   flower;
+  pedestal;
   text;
   timeLimit = 300;
   activeTime = false;
   currentTime = 0;
   gameOver = false;
+
 
 
   constructor() {
@@ -27,33 +29,12 @@ export default class GameScene extends Phaser.Scene {
   preload() {
     this.load.image('player', new URL('../../assets/myplayer.png', import.meta.url).href);
     this.load.image('background', new URL('../../assets/myBackground.png', import.meta.url).href);
+    this.load.image('pedestal', new URL('../../assets/pedestal.png', import.meta.url).href);
     this.load.image('enemy', new URL('../../assets/myEnemy.png', import.meta.url).href);
     this.load.image('flower', new URL('../../assets/flower.png', import.meta.url).href);
     this.load.image('cake', new URL('../../assets/cake.png', import.meta.url).href);
     this.load.image('shoes', new URL('../../assets/shoes.png', import.meta.url).href);
-    this.load.spritesheet('moveright', new URL('../../assets/maidR.png',
-      import.meta.url).href, {
-      frameWidth: 439,
-      frameHeight: 477
-    });
 
-    this.load.spritesheet('moverleft', new URL('../../assets/maidL.png',
-      import.meta.url).href, {
-      frameWidth: 439,
-      frameHeight: 477
-    });
-
-    this.load.spritesheet('moveup', new URL('../../assets/maidU.png',
-      import.meta.url).href, {
-      frameWidth: 439,
-      frameHeight: 477
-    });
-
-    this.load.spritesheet('movedown', new URL('../../assets/maidD.png',
-      import.meta.url).href, {
-      frameWidth: 439,
-      frameHeight: 477
-    });
   }
 
   create() {
@@ -61,16 +42,23 @@ export default class GameScene extends Phaser.Scene {
     const gameHeight: number = this.game.config.height as number;
 
     this.add.image(gameWidth / 2, gameHeight / 2, 'background');
-    this.enemy = this.physics.add.sprite(260, 280, 'enemy').setScale(.2, .2).setImmovable(true);
-    this.shoes = this.physics.add.sprite(700, 200, 'shoes').setScale(.1, .1).setImmovable(true);
-    this.cake = this.physics.add.sprite(1125, 400, 'cake').setScale(.4, .4).setImmovable(true);
-    this.flower = this.physics.add.sprite(500, 640, 'flower').setScale(.3, .3).setImmovable(true);
+    this.pedestal = this.physics.add.sprite(100, 440, 'pedestal').setScale(2, 2);
+    this.pedestal.setSize(90, 50);
+    this.cake = this.physics.add.sprite(1125, 400, 'cake').setScale(1.2, 1.2).setImmovable(true);
+    this.cake.setSize(100, 150);
+    this.enemy = this.physics.add.sprite(100, 350, 'enemy').setScale(.2, .2).setImmovable(true);
+    this.enemy.setSize(900, 900);
+    this.shoes = this.physics.add.sprite(600, 100, 'shoes').setScale(1.4, 1.4).setImmovable(true);
+    this.shoes.setSize(90, 90);
+    this.flower = this.physics.add.sprite(700, 650, 'flower').setScale(1.4, 1.4).setImmovable(true);
+    this.flower.setSize(70, 100);
+
     this.player = new Player(this, gameWidth / 2, gameHeight / 2);
+
 
     this.text = this.add.text(50, 50, 'timer: ', {
       fontFamily: 'Luminari Regular',
       fontSize: '30px',
-      // fill: '#000000',
       align: 'center',
       fontStyle: 'normal',
       stroke: '#000000',
@@ -81,7 +69,7 @@ export default class GameScene extends Phaser.Scene {
     });
 
     this.physics.add.collider(this.player, this.enemy, () => {
-      console.log('Brides are really awsome');
+      console.log('i have reached the bride');
     });
 
     this.physics.add.collider(this.player, this.flower, () => {
@@ -95,31 +83,11 @@ export default class GameScene extends Phaser.Scene {
     this.physics.add.collider(this.player, this.shoes, () => {
       console.log('i have reached the shoes');
     });
-
-    this.anims.create({
-      key: 'moveright',
-      frames: [{
-        key: 'moveright',
-        frame: 0
-      },
-      {
-        key: 'moveright',
-        frame: 1
-      },
-      {
-        key: 'moveright',
-        frame: 2
-      }
-      ],
-      frameRate: 15,
-      repeat: -1
-    })
   }
 
   update(time, delta) {
     this.currentTime += delta;
 
-    //console.log('time: ' + time, 'delta: ' + delta)
     this.player.update();
     this.timer();
     this.setScoreText();
@@ -127,7 +95,6 @@ export default class GameScene extends Phaser.Scene {
   }
 
   setScoreText() {
-    // console.log('hello')
     this.text.setText('Time: ' + this.timeLimit)
   }
   gameIsOver() {
@@ -144,7 +111,6 @@ export default class GameScene extends Phaser.Scene {
     if (this.activeTime === false) {
       console.log('timeLimit:' + this.timeLimit);
       this.timeLimit -= 1;
-      // this.setScoreText();
       this.activeTime = true;
       this.currentTime = 0;
     }
