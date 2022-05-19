@@ -3,7 +3,7 @@
     width: 50%;
 }
 .myplayer {
-    width: 50%
+    
 }
 
 body.border{
@@ -24,7 +24,7 @@ body.split{
 }
 
 img {
-    max-width: 80%;
+    /* max-width: 80%; */
    height: auto;
    /* object-fit: cover; */
 }
