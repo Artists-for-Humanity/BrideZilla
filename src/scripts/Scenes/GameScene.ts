@@ -31,6 +31,29 @@ export default class GameScene extends Phaser.Scene {
     this.load.image('flower', new URL('../../assets/flower.png', import.meta.url).href);
     this.load.image('cake', new URL('../../assets/cake.png', import.meta.url).href);
     this.load.image('shoes', new URL('../../assets/shoes.png', import.meta.url).href);
+    this.load.spritesheet('moveright', new URL('../../assets/maidR.png',
+      import.meta.url).href, {
+      frameWidth: 439,
+      frameHeight: 477
+    });
+
+    this.load.spritesheet('moverleft', new URL('../../assets/maidL.png',
+      import.meta.url).href, {
+      frameWidth: 439,
+      frameHeight: 477
+    });
+
+    this.load.spritesheet('moveup', new URL('../../assets/maidU.png',
+      import.meta.url).href, {
+      frameWidth: 439,
+      frameHeight: 477
+    });
+
+    this.load.spritesheet('movedown', new URL('../../assets/maidD.png',
+      import.meta.url).href, {
+      frameWidth: 439,
+      frameHeight: 477
+    });
   }
 
   create() {
@@ -72,6 +95,25 @@ export default class GameScene extends Phaser.Scene {
     this.physics.add.collider(this.player, this.shoes, () => {
       console.log('i have reached the shoes');
     });
+
+    this.anims.create({
+      key: 'moveright',
+      frames: [{
+        key: 'moveright',
+        frame: 0
+      },
+      {
+        key: 'moveright',
+        frame: 1
+      },
+      {
+        key: 'moveright',
+        frame: 2
+      }
+      ],
+      frameRate: 15,
+      repeat: -1
+    })
   }
 
   update(time, delta) {

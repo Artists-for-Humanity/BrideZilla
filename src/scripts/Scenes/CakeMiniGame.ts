@@ -21,7 +21,5 @@ export default class CakeMiniGame extends Phaser.Scene {
   }
 
 
-
-
   update() { }
 }
