@@ -35,28 +35,28 @@ export default class GameScene extends Phaser.Scene {
     this.load.image('cake', new URL('../../assets/cake.png', import.meta.url).href);
     this.load.image('shoes', new URL('../../assets/shoes.png', import.meta.url).href);
 
-    this.load.spritesheet('moveright', new URL('../../assets/maidR.png',
+    this.load.spritesheet('moveright', new URL('../../assets/boxR.png',
       import.meta.url).href, {
-      frameWidth: 439,
-      frameHeight: 477
+      frameWidth: 437,
+      frameHeight: 475
     });
 
-    this.load.spritesheet('moverleft', new URL('../../assets/maidL.png',
+    this.load.spritesheet('moveleft', new URL('../../assets/boxL.png',
       import.meta.url).href, {
-      frameWidth: 439,
-      frameHeight: 477
+      frameWidth: 437,
+      frameHeight: 475
     });
 
-    this.load.spritesheet('moveup', new URL('../../assets/maidU.png',
+    this.load.spritesheet('moveup', new URL('../../assets/boxU.png',
       import.meta.url).href, {
-      frameWidth: 439,
-      frameHeight: 477
+      frameWidth: 437,
+      frameHeight: 475
     });
 
-    this.load.spritesheet('movedown', new URL('../../assets/maidD.png',
+    this.load.spritesheet('movedown', new URL('../../assets/boxD.png',
       import.meta.url).href, {
-      frameWidth: 439,
-      frameHeight: 477
+      frameWidth: 437,
+      frameHeight: 475
     });
 
   }
@@ -68,11 +68,11 @@ export default class GameScene extends Phaser.Scene {
     this.add.image(gameWidth / 2, gameHeight / 2, 'background');
     this.pedestal = this.physics.add.sprite(100, 440, 'pedestal').setScale(2, 2);
     this.pedestal.setSize(90, 50);
-    this.cake = this.physics.add.sprite(1125, 400, 'cake').setScale(1.2, 1.2).setImmovable(true);
+    this.cake = this.physics.add.sprite(1125, 500, 'cake').setScale(1.2, 1.2).setImmovable(true);
     this.cake.setSize(100, 150);
     this.enemy = this.physics.add.sprite(100, 350, 'enemy').setScale(.2, .2).setImmovable(true);
     this.enemy.setSize(900, 900);
-    this.shoes = this.physics.add.sprite(600, 100, 'shoes').setScale(1.4, 1.4).setImmovable(true);
+    this.shoes = this.physics.add.sprite(650, 100, 'shoes').setScale(0.7).setImmovable(true);
     this.shoes.setSize(90, 90);
     this.flower = this.physics.add.sprite(700, 650, 'flower').setScale(1.4, 1.4).setImmovable(true);
     this.flower.setSize(70, 100);
@@ -125,7 +125,35 @@ export default class GameScene extends Phaser.Scene {
       ],
       frameRate: 15,
       repeat: -1
-    })
+    });
+
+    this.anims.create({
+      key: 'moveleft',
+      frames: [{
+        key: 'moveleft',
+        frame: 0
+      },
+      {
+        key: 'moveleft',
+        frame: 1
+      },
+      {
+        key: 'moveleft',
+        frame: 2
+      }
+      ],
+      frameRate: 15,
+      repeat: -1
+    });
+    this.anims.create({
+      key: 'idle',
+      frames: [{
+        key: 'movedown',
+        frame: 0
+      },
+      ],
+      frameRate: 15,
+    });
   }
 
   update(time, delta) {

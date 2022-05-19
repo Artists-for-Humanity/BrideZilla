@@ -22,7 +22,7 @@ export default class GameOverScene extends Phaser.Scene {
     this.restart = this.add.image(gameWidth - 776, gameHeight - 402, 'restart').setScale(.5, .5);
     this.restart.setInteractive();
     this.restart.on('pointerdown', () => {
-      this.scene.start('GameoverScene');
+      this.scene.start('MenuScene');
     });
   }
 
