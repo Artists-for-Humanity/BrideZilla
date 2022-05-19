@@ -14,7 +14,9 @@ export default class GameScene extends Phaser.Scene {
 
   }
 
+  //change the name of game
   create() {
+
     const gameWidth: number = this.game.config.width as number;
     const gameHeight: number = this.game.config.height as number;
     this.add.image(gameWidth / 2, gameHeight / 2, 'menuscreen');
@@ -26,9 +28,32 @@ export default class GameScene extends Phaser.Scene {
       align: 'center',
     }
     this.start = this.add.image(gameWidth - 910, gameHeight - 365, 'start').setScale(.68, .5);
+    console.log(this.start);
+    // this.start.setVisible(false);
     this.start.setInteractive();
     this.start.on('pointerdown', () => {
+      console.log('start');
       this.scene.start('GameScene');
     });
+
+    //  WebFont.load({
+    //     custom: {
+    //       families: ['Space Mono'],
+    //     },
+    //     active: () => {
+    //       this.add
+    //         .text(
+    //           gameWidth / 2,
+    //           gameHeight * (2 / 3),
+    //           'You can change me in MenuScene.js',
+    //           textStyle
+    //         )
+    //         .setOrigin(0.5);
+    //     },
+    //   });
+
+    // this.input.keyboard.on('keydown-SPACE', () => {
+    //   this.scene.start('GameScene');
+    // });
   }
 }
