@@ -2,61 +2,38 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bridezilla</title>
     <!-- Prevent File not found (404) for favicon.ico -->
     <link rel="icon" href="data:;base64,=">
-    <link rel="stylesheet" href="style.css">
 
+    <meta charset="UTF-8" />
+    <title>Bridezilla</title>
+    <style type="text/css">
+        @font-face {
+            font-family: 'Space Mono';
+            src: url('./assets/fonts/space-mono-v6-latin-regular.woff2') format('woff2');
+        }
+
+        html {
+            height: 100%;
+            background-color: #4c4d4e;
+            color: white;
+        }
+
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+        }
+
+        h1 {
+            font-family: 'Space Mono', cursive;
+        }
+    </style>
 </head>
 
-<body class="split">
-    <header class="header header-white">
-        <div class="header-content">
-            <img class="header-title" src="assets/BRIDEZILLA-2.png">
-
-        </div>
-        <div class="nav-container">
-            <a class="nav-btn" href="index.html">Home</a>
-            <a class="nav-btn current-page" href="game.html">Overview</a>
-            <a class="nav-btn " href="gameplay.html">Game</a>
-        </div>
-    </header>
-
-
-    <div class="game-body">
-        <div class="how-to">
-            <h1>Objective:</h1>
-            <p>
-                Run to each station to achieve each demand that the bride has given you in a timely fashion. Click the
-                spacebar to get the item you need. Complete each of the mini games.
-
-
-            </p>
-            <img class="flower" src="assets/flower.png">
-            <div class="cake">
-                <img src="assets/Cake.png">
-                <img src="assets/Shoes.png">
-
-            </div>
-        </div>
-        <div class="game-play">
-            <h1>HOW TO PLAY:</h1>
-            <p>
-                Move using the arrow keys ( up, down, left, right ). Move to the station that the bride
-                has demanded. Collect the item with the spacebar. Press the spacebar to give the item to the bride.
-                The timer starts when the bride gives the first demand. Complete all this before the timer runs out.
-                <img src="assets/myplayer.png">
-
-            </p>
-
-        </div>
-
-
-    </div>
-
+<body>
+    <script type="module" src="scripts/main.ts"></script>
 </body>
 
 </html>
