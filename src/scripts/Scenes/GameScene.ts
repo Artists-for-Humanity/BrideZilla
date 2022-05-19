@@ -107,6 +107,25 @@ export default class GameScene extends Phaser.Scene {
     this.physics.add.collider(this.player, this.shoes, () => {
       console.log('i have reached the shoes');
     });
+
+    this.anims.create({
+      key: 'moveright',
+      frames: [{
+        key: 'moveright',
+        frame: 0
+      },
+      {
+        key: 'moveright',
+        frame: 1
+      },
+      {
+        key: 'moveright',
+        frame: 2
+      }
+      ],
+      frameRate: 15,
+      repeat: -1
+    })
   }
 
   update(time, delta) {
