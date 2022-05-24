@@ -3,8 +3,7 @@ import Phaser from 'phaser';
 export default class Player extends Phaser.Physics.Arcade.Sprite {
   cursors: any;
   speed: number;
-  xSpeed: number;
-  ySpeed: number;
+  direction: "idle" | "left" | "right" | "up" | "down";
 
   constructor(scene, x, y) {
     super(scene, x, y, 'movedown');
@@ -15,48 +14,63 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
 
     this.cursors = scene.input.keyboard.createCursorKeys();
     this.setScale(.2, .2);
-    this.speed = 5;
-    this.xSpeed = 0;
-    this.ySpeed = 0;
+    this.speed = 200;
+    this.direction = "idle";
+
     return this;
   }
 
   update() {
+    this.setDirection();
     this.move();
-    // this.setVelocity(this.xSpeed, this.ySpeed);
+  }
+
+  setDirection() {
+    if (this.cursors.up.isDown) {
+      this.direction = "up";
+      return;
+    }
+    if (this.cursors.down.isDown) {
+      this.direction = "down";
+      return;
+    }
+    if (this.cursors.left.isDown) {
+      this.direction = "left";
+      return;
+    }
+    if (this.cursors.right.isDown) {
+      this.direction = "right";
+      return;
+    }
+
+    this.direction = "idle";
   }
 
   move() {
-    if (this.cursors.up.isDown) {
-      this.y -= this.speed;
+    if (this.direction === "up") {
       this.anims.play('moveup', true);
+      this.setVelocity(0, -1 * this.speed);
       return;
-      //up and walking up animation//
     }
-    if (this.cursors.down.isDown) {
-      this.y += this.speed;
+    if (this.direction === "down") {
       this.anims.play('movedown', true);
-
+      this.setVelocity(0, this.speed);
       return;
-      //down and walking down animation//
     }
-    if (this.cursors.left.isDown) {
-      this.x -= this.speed;
+    if (this.direction === "left") {
       this.anims.play('moveleft', true);
-
+      this.setVelocity(-1 * this.speed, 0);
       return;
-      //left and walking left animation//
     }
-    if (this.cursors.right.isDown) {
+    if (this.direction === "right") {
       this.anims.play('moveright', true);
-      this.x += this.speed;
+      this.setVelocity(this.speed, 0);
       return;
-      //right and walking right animation//
     }
-
-    this.anims.play('idle', true);
-
-
-    // this.anims.play('idle', true);
+    if (this.direction === "idle") {
+      this.anims.play('idle', true);
+      this.setVelocity(0, 0);
+      return;
+    }
   }
 }

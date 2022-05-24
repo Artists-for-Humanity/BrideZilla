@@ -66,7 +66,7 @@ export default class GameScene extends Phaser.Scene {
     const gameHeight: number = this.game.config.height as number;
 
     this.add.image(gameWidth / 2, gameHeight / 2, 'background');
-    this.pedestal = this.physics.add.sprite(100, 440, 'pedestal').setScale(2, 2);
+    this.pedestal = this.physics.add.sprite(100, 440, 'pedestal').setScale(2, 2).setImmovable(true);
     this.pedestal.setSize(90, 50);
     this.cake = this.physics.add.sprite(1125, 500, 'cake').setScale(1.2, 1.2).setImmovable(true);
     this.cake.setSize(100, 150);
@@ -78,7 +78,6 @@ export default class GameScene extends Phaser.Scene {
     this.flower.setSize(70, 100);
 
     this.player = new Player(this, gameWidth / 2, gameHeight / 2);
-
 
     this.text = this.add.text(50, 50, 'timer: ', {
       fontFamily: 'Luminari Regular',
@@ -145,14 +144,43 @@ export default class GameScene extends Phaser.Scene {
       frameRate: 15,
       repeat: -1
     });
+
     this.anims.create({
-      key: 'idle',
+      key: 'moveup',
+      frames: [{
+        key: 'moveup',
+        frame: 0
+      },
+      {
+        key: 'moveup',
+        frame: 1
+      },
+      {
+        key: 'moveup',
+        frame: 2
+      }
+      ],
+      frameRate: 15,
+      repeat: -1
+
+    });
+    this.anims.create({
+      key: 'movedown',
       frames: [{
         key: 'movedown',
         frame: 0
       },
+      {
+        key: 'movedown',
+        frame: 1
+      },
+      {
+        key: 'movedown',
+        frame: 2
+      }
       ],
       frameRate: 15,
+      repeat: -1
     });
   }
 
@@ -180,7 +208,6 @@ export default class GameScene extends Phaser.Scene {
 
   timer() {
     if (this.activeTime === false) {
-      console.log('timeLimit:' + this.timeLimit);
       this.timeLimit -= 1;
       this.activeTime = true;
       this.currentTime = 0;
