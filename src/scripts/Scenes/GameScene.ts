@@ -3,6 +3,7 @@ import Player from '../Sprites/Player';
 import {
   colors
 } from '../constants';
+import GlobalState from 'scripts/GlobalState';
 
 export default class GameScene extends Phaser.Scene {
   player;
@@ -12,12 +13,10 @@ export default class GameScene extends Phaser.Scene {
   flower;
   pedestal;
   text;
-  timeLimit = 300;
   activeTime = false;
   currentTime = 0;
   gameOver = false;
-
-
+  globalState: any;
 
   constructor() {
     super({
@@ -25,8 +24,8 @@ export default class GameScene extends Phaser.Scene {
     });
   }
 
-
   preload() {
+
     this.load.image('player', new URL('../../assets/myplayer.png', import.meta.url).href);
     this.load.image('background', new URL('../../assets/myBackground.png', import.meta.url).href);
     this.load.image('pedestal', new URL('../../assets/pedestal.png', import.meta.url).href);
@@ -59,6 +58,7 @@ export default class GameScene extends Phaser.Scene {
       frameHeight: 475
     });
 
+
   }
 
   create() {
@@ -90,6 +90,9 @@ export default class GameScene extends Phaser.Scene {
         blur: 42
       }
     });
+
+    this.globalState.resetGame();
+    this.gameOver = false;
 
     this.physics.add.collider(this.player, this.enemy, () => {
       console.log('i have reached the bride');
@@ -186,7 +189,6 @@ export default class GameScene extends Phaser.Scene {
 
   update(time, delta) {
     this.currentTime += delta;
-
     this.player.update();
     this.timer();
     this.setScoreText();
@@ -194,28 +196,28 @@ export default class GameScene extends Phaser.Scene {
   }
 
   setScoreText() {
-    this.text.setText('Time: ' + this.timeLimit)
+    this.text.setText('Time: ' + this.globalState.timer)
   }
+
   gameIsOver() {
-    if (this.timeLimit === 0) {
+    if (this.globalState.timer === 0) {
       this.gameOver = true;
     }
     if (this.gameOver) {
       this.scene.start('GameOverScene');
-
     }
   }
 
   timer() {
     if (this.activeTime === false) {
-      this.timeLimit -= 1;
+      this.globalState.timer -= 1;
       this.activeTime = true;
       this.currentTime = 0;
+      this.globalState.incrementScore();
     }
     if (this.activeTime === true && this.currentTime > 1000) {
       this.currentTime -= 1000;
       this.activeTime = false;
     }
-
   }
 }

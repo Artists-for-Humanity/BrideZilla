@@ -5,6 +5,7 @@ import GameOverScene from './Scenes/GameOverScene';
 import ShoeMiniGame from './Scenes/ShoeMiniGame';
 import CakeMiniGame from './Scenes/CakeMiniGame';
 import FlowerMiniGame from './Scenes/FlowerMiniGame';
+import GlobalState from './GlobalState';
 
 
 
@@ -28,6 +29,16 @@ const config = {
   scene: [MenuScene, GameScene, FlowerMiniGame, ShoeMiniGame, CakeMiniGame, GameOverScene],
   audio: {
     disableWebAudio: true,
+  },
+  plugins: {
+    global: [
+      {
+        key: 'GlobalState',
+        plugin: GlobalState,
+        start: false,
+        mapping: 'globalState'
+      }
+    ],
   },
 };
 
