@@ -58,6 +58,12 @@ export default class GameScene extends Phaser.Scene {
       frameHeight: 475
     });
 
+    this.load.spritesheet('idle', new URL('../../assets/boxD.png',
+      import.meta.url).href, {
+      frameWidth: 437,
+      frameHeight: 475
+    });
+
 
   }
 
@@ -108,6 +114,13 @@ export default class GameScene extends Phaser.Scene {
 
     this.physics.add.collider(this.player, this.shoes, () => {
       console.log('i have reached the shoes');
+    });
+    this.anims.create({
+      key: 'idle',
+      frames: [{
+        key: 'idle',
+        frame: 0
+      }],
     });
 
     this.anims.create({
