@@ -17,9 +17,10 @@ export default class ShoeMiniGame extends Phaser.Scene {
 
   preload() {
     this.load.image('ShoeMiniGame', new URL('../../assets/ShoeMiniGame.png', import.meta.url).href);
-    this.load.image('shoe2', new URL('../../assets/rightshoe.png', import.meta.url).href);
-    this.load.image('shoe3', new URL('../../assets/leftshoe.png', import.meta.url).href);
-
+    this.load.image('shoeR00', new URL('../../assets/Bridezilla_shoes/rightshoe00.png', import.meta.url).href);
+    this.load.image('shoeL00', new URL('../../assets/Bridezilla_shoes/leftshoe00.png', import.meta.url).href);
+    this.load.image('shoeR01', new URL('../../assets/Bridezilla_shoes/rightshoe01.png', import.meta.url).href);
+    this.load.image('shoeL02', new URL('../../assets/Bridezilla_shoes/leftshoe01.png', import.meta.url).href);
 
 
   }
@@ -33,7 +34,6 @@ export default class ShoeMiniGame extends Phaser.Scene {
     const gameWidth: number = this.game.config.width as number;
     const gameHeight: number = this.game.config.height as number;
     this.add.image(gameWidth / 2, gameHeight / 2, 'ShoeMiniGame');
-    this.add.image(950, 610, 'shoe2').setScale(.2, .2);
     //310 and 950 for the sides of the box
     //450 and 
     this.shoes = this.physics.add.group()
@@ -60,8 +60,8 @@ export default class ShoeMiniGame extends Phaser.Scene {
 
   setImage() {
     for (let i = 0; i < this.colors.length; i++) {
-      this.shoes.create(Phaser.Math.Between(310, 950), Phaser.Math.Between(450, 610), 'shoe2').setScale(.4, .4).setTint(this.colors[i]);
-      this.shoes.create(Phaser.Math.Between(310, 950), Phaser.Math.Between(450, 610), 'shoe3').setScale(.4, .4).setTint(this.colors[i]);
+      this.shoes.create(Phaser.Math.Between(310, 950), Phaser.Math.Between(450, 610), 'shoeR00').setScale(1, 1).setTint(this.colors[i]).setSize(65, 65);
+      this.shoes.create(Phaser.Math.Between(310, 950), Phaser.Math.Between(450, 610), 'shoeL00').setScale(1, 1).setTint(this.colors[i]);
 
     }
   }
