@@ -10,7 +10,7 @@ export default class CakeMiniGame extends Phaser.Scene {
   }
 
   preload() {
-    this.load.image('cakeMiniGame', new URL('../../assets/CakeMiniGame.png', import.meta.url).href);
+    this.load.image('cakeMiniGame', new URL('../../assets/bgcake.png', import.meta.url).href);
   }
 
 
