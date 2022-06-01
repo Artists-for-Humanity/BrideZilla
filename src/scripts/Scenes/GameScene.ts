@@ -31,28 +31,29 @@ export default class GameScene extends Phaser.Scene {
     this.load.image('flower', new URL('../../assets/flower.png', import.meta.url).href);
     this.load.image('cake', new URL('../../assets/cake.png', import.meta.url).href);
     this.load.image('shoes', new URL('../../assets/shoes.png', import.meta.url).href);
-    this.load.spritesheet('moveright', new URL('../../assets/maidR.png',
+
+    this.load.spritesheet('moveright', new URL('../../assets/walkingD.png',
       import.meta.url).href, {
-      frameWidth: 439,
-      frameHeight: 477
+      frameWidth: 530,
+      frameHeight: 597
     });
 
-    this.load.spritesheet('moverleft', new URL('../../assets/maidL.png',
+    this.load.spritesheet('moverleft', new URL('../../assets/walkingU.png',
       import.meta.url).href, {
-      frameWidth: 439,
-      frameHeight: 477
+      frameWidth: 530,
+      frameHeight: 597
     });
 
-    this.load.spritesheet('moveup', new URL('../../assets/maidU.png',
+    this.load.spritesheet('moveup', new URL('../../assets/walkingR.png',
       import.meta.url).href, {
-      frameWidth: 439,
-      frameHeight: 477
+      frameWidth: 530,
+      frameHeight: 597
     });
 
-    this.load.spritesheet('movedown', new URL('../../assets/maidD.png',
+    this.load.spritesheet('movedown', new URL('../../assets/walkingL.png',
       import.meta.url).href, {
-      frameWidth: 439,
-      frameHeight: 477
+      frameWidth: 530,
+      frameHeight: 597
     });
   }
 
