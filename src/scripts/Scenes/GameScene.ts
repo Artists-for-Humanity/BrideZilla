@@ -13,8 +13,8 @@ export default class GameScene extends Phaser.Scene {
   flower;
   pedestal;
   text;
-  activeTime = false;
-  currentTime = 0;
+  // activeTime = false;
+  // currentTime = 0;
   gameOver = false;
   globalState: any;
 
@@ -106,14 +106,18 @@ export default class GameScene extends Phaser.Scene {
 
     this.physics.add.collider(this.player, this.flower, () => {
       console.log('i have reached the flowers');
+      this.scene.start('FlowerMiniGame');
     });
 
     this.physics.add.collider(this.player, this.cake, () => {
       console.log('i have reached the cake');
+      this.scene.start('CakeMiniGame');
+
     });
 
     this.physics.add.collider(this.player, this.shoes, () => {
       console.log('i have reached the shoes');
+      this.scene.start('ShoeMiniGame');
     });
     this.anims.create({
       key: 'idle',
@@ -201,15 +205,15 @@ export default class GameScene extends Phaser.Scene {
   }
 
   update(time, delta) {
-    this.currentTime += delta;
     this.player.update();
-    this.timer();
+    // this.globalState.timer();
+    this.globalState.update(time, delta);
     this.setScoreText();
     this.gameIsOver();
   }
 
   setScoreText() {
-    this.text.setText('Time: ' + this.globalState.timer)
+    this.text.setText('Time: ' + this.globalState.gameTime)
   }
 
   gameIsOver() {
@@ -218,19 +222,6 @@ export default class GameScene extends Phaser.Scene {
     }
     if (this.gameOver) {
       this.scene.start('GameOverScene');
-    }
-  }
-
-  timer() {
-    if (this.activeTime === false) {
-      this.globalState.timer -= 1;
-      this.activeTime = true;
-      this.currentTime = 0;
-      this.globalState.incrementScore();
-    }
-    if (this.activeTime === true && this.currentTime > 1000) {
-      this.currentTime -= 1000;
-      this.activeTime = false;
     }
   }
 }

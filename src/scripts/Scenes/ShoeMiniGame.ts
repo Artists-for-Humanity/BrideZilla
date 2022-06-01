@@ -4,7 +4,7 @@ import { colors } from '../constants';
 
 export default class ShoeMiniGame extends Phaser.Scene {
   shoes;
-  colors = [colors.EerieBlack, colors.glossyGape, colors.LanguidLavendar, colors.blueSapphire, colors.naplesYellow, colors.unbleachSilk, colors.coffee, colors.liver, colors.lightSlateGray, colors.tuscany, colors.bloodRed, colors.miniPink, colors.ashGray, colors.aeroBlue, colors.polishedPine]
+  colors = [colors.EerieBlack, colors.glossyGape, colors.LanguidLavendar, colors.blueSapphire, colors.naplesYellow, colors.pinkLavender, colors.coffee, colors.liver, colors.lightSlateGray, colors.cinnamonSatin, colors.bloodRed, colors.miniPink, colors.ashGray, colors.aeroBlue, colors.polishedPine]
   shoeL = [
     'shoeL00',
     'shoeL01',

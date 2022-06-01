@@ -11,7 +11,7 @@ const colors = {
   coffee: '0x7f5539',
   liver: '0x5c4742',
   lightSlateGray: '0x698996',
-  tuscany: '0xc89f9c',
+  cinnamonSatin: '0xce6a85',
   bloodRed: '0x6e0e0a',
   miniPink: '0xffd6e0',
   ashGray: '0xafbfc0',
