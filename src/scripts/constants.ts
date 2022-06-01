@@ -2,7 +2,7 @@
 const colors = {
   white: '0xffffff',
   black: '0x000000',
-  unbleachSilk: '0xffd5c2',
+  pinkLavender: '0xffd5c2',
   blueSapphire: '0x175676',
   EerieBlack: '0x212529',
   glossyGape: '0x9c89b8',
