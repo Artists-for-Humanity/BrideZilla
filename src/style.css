@@ -1,9 +1,54 @@
 
-.cake{
-    width: 50%;
+@font-face {
+    font-family: bridezilla;
+    src: url(assets/fonts/Piedra-Regular.ttf);
 }
-.myplayer {
-    
+.picrow{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: stretch;
+    /* margin-top: 100px; */
+
+}
+.flower .shoes .cake{
+    flex:auto;
+    flex-shrink: 1;
+    flex-wrap: wrap;
+
+
+}
+.player {
+    display: flex;
+    justify-content: center;
+}
+
+.game-bg-wrapper {
+    /* margin-top: 90px; */
+    display: flex;
+    justify-content: center;
+}
+.playerimg {
+    display: flex;
+}
+
+.bride1 {
+    /* position: absolute;
+    margin-left: -500px; */
+    padding: 30px;
+
+}
+
+.bride2{
+    transform: scaleX(-1);
+    padding: 30px;
+
+}
+
+.headerbrides {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
 }
 
 body.border{
@@ -18,13 +63,10 @@ body.split{
     font-family: Verdana, Geneva, Tahoma, sans-serif;    
     color: black;
     background: linear-gradient(90deg, #ff7492 50%, #F9C4CF 0, #F9C4CF 100%);
-
-
-
 }
 
 img {
-    /* max-width: 80%; */
+    max-width: 100%;
    height: auto;
    /* object-fit: cover; */
 }
@@ -43,9 +85,7 @@ p {
     align-items: center;
     padding-bottom: 60px;
 }
-.header-white{
-    
-}
+
 
 .header-title {
 padding: 40px; 
@@ -76,15 +116,26 @@ padding: 40px;
     flex-direction: row;
     justify-content: space-evenly;
     justify-items: center;
+    gap: 30px;
 }
 
 .home-header {
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    /* text-align: center; */
     margin-bottom: 50px;
 }
 
+.home-roles-text {
+    margin-top: 50px;
+}
+
+.role-title {
+
+font-family: bridezilla}
+
 .home-prof-img {
-    border-radius: 50%;
+    margin-top: -40px;
 }
 
 /* ABOUT */
@@ -111,6 +162,7 @@ padding: 40px;
     display: grid;
     grid-auto-flow: column;
     grid-auto-columns: 1fr;
+    gap: 100px;
 
     color: rgb(0, 0, 0)
 
@@ -118,10 +170,8 @@ padding: 40px;
 
 }
 
-.how-to{
-    padding: 20px
+.how-to, .game-play{
+    padding: 40px
 }
-.game-play{
-    padding: 20px
-}
+
 
