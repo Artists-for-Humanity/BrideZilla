@@ -13,7 +13,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     this.setCollideWorldBounds(true);
 
     this.cursors = scene.input.keyboard.createCursorKeys();
-    this.setScale(.2, .2);
+    this.setScale(.3, .3);
     this.speed = 200;
     this.direction = "idle";
 
@@ -72,7 +72,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
       this.setVelocity(0, 0);
       return;
     }
-    this.move();
+    // this.move();
 
     // this.setVelocity(this.xSpeed, this.ySpeed);
   }
