@@ -34,29 +34,6 @@ export default class GameScene extends Phaser.Scene {
     this.load.image('cake', new URL('../../assets/cake.png', import.meta.url).href);
     this.load.image('shoes', new URL('../../assets/shoes.png', import.meta.url).href);
 
-    this.load.spritesheet('moveright', new URL('../../assets/boxR.png',
-      import.meta.url).href, {
-      frameWidth: 437,
-      frameHeight: 475
-    });
-
-    this.load.spritesheet('moveleft', new URL('../../assets/boxL.png',
-      import.meta.url).href, {
-      frameWidth: 437,
-      frameHeight: 475
-    });
-
-    this.load.spritesheet('moveup', new URL('../../assets/boxU.png',
-      import.meta.url).href, {
-      frameWidth: 437,
-      frameHeight: 475
-    });
-
-    this.load.spritesheet('movedown', new URL('../../assets/boxD.png',
-      import.meta.url).href, {
-      frameWidth: 437,
-      frameHeight: 475
-    });
 
     this.load.spritesheet('idle', new URL('../../assets/boxD.png',
       import.meta.url).href, {
@@ -64,7 +41,29 @@ export default class GameScene extends Phaser.Scene {
       frameHeight: 475
     });
 
+    this.load.spritesheet('moveright', new URL('../../assets/walkingD.png',
+      import.meta.url).href, {
+      frameWidth: 530,
+      frameHeight: 597
+    });
 
+    this.load.spritesheet('moverleft', new URL('../../assets/walkingU.png',
+      import.meta.url).href, {
+      frameWidth: 530,
+      frameHeight: 597
+    });
+
+    this.load.spritesheet('moveup', new URL('../../assets/walkingR.png',
+      import.meta.url).href, {
+      frameWidth: 530,
+      frameHeight: 597
+    });
+
+    this.load.spritesheet('movedown', new URL('../../assets/walkingL.png',
+      import.meta.url).href, {
+      frameWidth: 530,
+      frameHeight: 597
+    });
   }
 
   create() {
@@ -202,6 +201,25 @@ export default class GameScene extends Phaser.Scene {
       frameRate: 15,
       repeat: -1
     });
+
+    this.anims.create({
+      key: 'moveright',
+      frames: [{
+        key: 'moveright',
+        frame: 0
+      },
+      {
+        key: 'moveright',
+        frame: 1
+      },
+      {
+        key: 'moveright',
+        frame: 2
+      }
+      ],
+      frameRate: 15,
+      repeat: -1
+    })
   }
 
   update(time, delta) {

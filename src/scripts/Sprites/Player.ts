@@ -72,5 +72,10 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
       this.setVelocity(0, 0);
       return;
     }
+    this.move();
+
+    // this.setVelocity(this.xSpeed, this.ySpeed);
   }
+
+
 }
