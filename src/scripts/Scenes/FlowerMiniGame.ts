@@ -6,6 +6,7 @@ export default class FlowerMiniGame extends Phaser.Scene {
   flowerpetals;
   // flowerpetal;
   flowerbud;
+  deadpetals;
   numPetals = 5;
   constructor() {
     super({
@@ -21,6 +22,8 @@ export default class FlowerMiniGame extends Phaser.Scene {
       import.meta.url).href);
     this.load.image('flowerbud', new URL('../../assets/flowerbud.png',
       import.meta.url).href);
+    this.load.image('deadpetal', new URL('../../assets/deadpetal.png',
+      import.meta.url).href);
 
 
 
@@ -32,10 +35,11 @@ export default class FlowerMiniGame extends Phaser.Scene {
     const gameHeight: number = this.game.config.height as number;
     this.add.image(gameWidth / 2, gameHeight / 2, 'flowerMiniGame');
     this.flowerpetals = this.physics.add.group();
+    this.deadpetals = this.physics.add.group();
     this.setFlowerPetals();
     //this.load.image('stem', new URL('../../assets/stem.png', import.meta.url).href);
     // this.flowerpetal = this.add.image(640, 250, 'petal').setScale(.2, .2);
-    this.flowerbud = this.add.image(640, 300, 'flowerbud');
+    this.flowerbud = this.add.image(645, 300, 'flowerbud').setScale(1.3, 1.3);
     // this.flowerpetal.rotation += 1;
     console.log(this.flowerpetals);
     // this.input.setDraggable(this.flowerpetals);
@@ -44,13 +48,12 @@ export default class FlowerMiniGame extends Phaser.Scene {
     // this.flowerpetals.setInteractive();
 
     this.flowerpetals.getChildren().forEach(function (petal) {
-      // petal.setInteractive();
       console.log(petal);
-      // this.scene.input.setDraggable(petal);
       petal.setInteractive({ draggable: true });
-
-      // petal.input.draggable = true;
-
+    });
+    this.deadpetals.getChildren().forEach(function (petal) {
+      console.log(petal);
+      petal.setInteractive({ draggable: true });
     });
     this.input.on('drag', function (pointer, gameObject, dragX, dragY) {
 
@@ -98,7 +101,9 @@ export default class FlowerMiniGame extends Phaser.Scene {
         x -= 20;
         y -= 50;
       }
-      this.flowerpetals.create(x, y, 'petal').setScale(.2, .2).rotation += r;
+      this.flowerpetals.create(x, y, 'petal').setScale(2.5, 2.5).rotation += r;
+      this.deadpetals.create(x, y, 'deadpetal').setScale(.9, .9).rotation += r;
+
 
     }
   }
