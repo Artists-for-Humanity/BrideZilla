@@ -25,7 +25,7 @@ export default class GameScene extends Phaser.Scene {
     this.load.image('player', new URL('../../assets/myplayer.png', import.meta.url).href);
     this.load.image('background', new URL('../../assets/myBackground.png', import.meta.url).href);
     this.load.image('pedestal', new URL('../../assets/pedestal.png', import.meta.url).href);
-    this.load.image('enemy', new URL('../../assets/myEnemy.png', import.meta.url).href);
+    this.load.image('enemy', new URL('../../assets/myenemy.png', import.meta.url).href);
     this.load.image('flower', new URL('../../assets/flower.png', import.meta.url).href);
     this.load.image('cake', new URL('../../assets/cake.png', import.meta.url).href);
     this.load.image('shoes', new URL('../../assets/shoes.png', import.meta.url).href);
