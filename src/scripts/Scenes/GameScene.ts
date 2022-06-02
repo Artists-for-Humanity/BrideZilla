@@ -1,9 +1,6 @@
 import Phaser from 'phaser';
 import Player from '../Sprites/Player';
-import {
-  colors
-} from '../constants';
-import GlobalState from 'scripts/GlobalState';
+
 
 export default class GameScene extends Phaser.Scene {
   player;
@@ -25,7 +22,6 @@ export default class GameScene extends Phaser.Scene {
   }
 
   preload() {
-
     this.load.image('player', new URL('../../assets/myplayer.png', import.meta.url).href);
     this.load.image('background', new URL('../../assets/myBackground.png', import.meta.url).href);
     this.load.image('pedestal', new URL('../../assets/pedestal.png', import.meta.url).href);

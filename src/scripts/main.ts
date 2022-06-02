@@ -7,8 +7,6 @@ import CakeMiniGame from './Scenes/CakeMiniGame';
 import FlowerMiniGame from './Scenes/FlowerMiniGame';
 import GlobalState from './GlobalState';
 
-
-
 // Set configuration for phaser game instance
 const config = {
   type: Phaser.AUTO,
