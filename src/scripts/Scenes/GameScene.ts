@@ -1,9 +1,6 @@
 import Phaser from 'phaser';
 import Player from '../Sprites/Player';
-import {
-  colors
-} from '../constants';
-import GlobalState from 'scripts/GlobalState';
+
 
 export default class GameScene extends Phaser.Scene {
   player;
@@ -25,7 +22,6 @@ export default class GameScene extends Phaser.Scene {
   }
 
   preload() {
-
     this.load.image('player', new URL('../../assets/myplayer.png', import.meta.url).href);
     this.load.image('background', new URL('../../assets/myBackground.png', import.meta.url).href);
     this.load.image('pedestal', new URL('../../assets/pedestal.png', import.meta.url).href);
@@ -35,31 +31,31 @@ export default class GameScene extends Phaser.Scene {
     this.load.image('shoes', new URL('../../assets/shoes.png', import.meta.url).href);
 
 
-    this.load.spritesheet('idle', new URL('../../assets/boxD.png',
-      import.meta.url).href, {
-      frameWidth: 437,
-      frameHeight: 475
-    });
-
-    this.load.spritesheet('moveright', new URL('../../assets/walkingD.png',
+    this.load.spritesheet('idle', new URL('../../assets/walkingD.png',
       import.meta.url).href, {
       frameWidth: 530,
       frameHeight: 597
     });
 
-    this.load.spritesheet('moverleft', new URL('../../assets/walkingU.png',
+    this.load.spritesheet('moveright', new URL('../../assets/walkingR.png',
       import.meta.url).href, {
       frameWidth: 530,
       frameHeight: 597
     });
 
-    this.load.spritesheet('moveup', new URL('../../assets/walkingR.png',
+    this.load.spritesheet('moveleft', new URL('../../assets/walkingL.png',
       import.meta.url).href, {
       frameWidth: 530,
       frameHeight: 597
     });
 
-    this.load.spritesheet('movedown', new URL('../../assets/walkingL.png',
+    this.load.spritesheet('moveup', new URL('../../assets/walkingU.png',
+      import.meta.url).href, {
+      frameWidth: 530,
+      frameHeight: 597
+    });
+
+    this.load.spritesheet('movedown', new URL('../../assets/walkingD.png',
       import.meta.url).href, {
       frameWidth: 530,
       frameHeight: 597
@@ -71,12 +67,12 @@ export default class GameScene extends Phaser.Scene {
     const gameHeight: number = this.game.config.height as number;
 
     this.add.image(gameWidth / 2, gameHeight / 2, 'background');
-    this.pedestal = this.physics.add.sprite(100, 440, 'pedestal').setScale(2, 2).setImmovable(true);
+    this.pedestal = this.physics.add.sprite(100, 440, 'pedestal').setScale(2.5, 2.5).setImmovable(true);
     this.pedestal.setSize(90, 50);
     this.cake = this.physics.add.sprite(1125, 500, 'cake').setScale(1.2, 1.2).setImmovable(true);
     this.cake.setSize(100, 150);
-    this.enemy = this.physics.add.sprite(100, 350, 'enemy').setScale(.2, .2).setImmovable(true);
-    this.enemy.setSize(900, 900);
+    this.enemy = this.physics.add.sprite(120, 320, 'enemy').setScale(.3, .3).setImmovable(true);
+    this.enemy.setSize(900, 850);
     this.shoes = this.physics.add.sprite(650, 100, 'shoes').setScale(0.7).setImmovable(true);
     this.shoes.setSize(90, 90);
     this.flower = this.physics.add.sprite(700, 650, 'flower').setScale(1.4, 1.4).setImmovable(true);
@@ -122,7 +118,7 @@ export default class GameScene extends Phaser.Scene {
       key: 'idle',
       frames: [{
         key: 'idle',
-        frame: 0
+        frame: 1
       }],
     });
 

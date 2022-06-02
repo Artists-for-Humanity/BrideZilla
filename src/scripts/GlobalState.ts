@@ -11,7 +11,7 @@ class GlobalState extends Phaser.Plugins.BasePlugin {
     update(time, delta) {
         // console.log('reach me');
         this.currentTime += delta;
-        console.log(this.currentTime);
+        // console.log(this.currentTime);
         this.timer()
 
     }
