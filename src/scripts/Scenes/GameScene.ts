@@ -9,7 +9,7 @@ export default class GameScene extends Phaser.Scene {
   shoes;
   flower;
   pedestal;
-  text;
+  // text;
   // activeTime = false;
   // currentTime = 0;
   gameOver = false;
@@ -80,38 +80,25 @@ export default class GameScene extends Phaser.Scene {
 
     this.player = new Player(this, gameWidth / 2, gameHeight / 2);
 
-    this.text = this.add.text(50, 50, 'timer: ', {
-      fontFamily: 'Luminari Regular',
-      fontSize: '30px',
-      align: 'center',
-      fontStyle: 'normal',
-      stroke: '#000000',
-      strokeThickness: 8,
-      shadow: {
-        blur: 42
-      }
-    });
+    this.globalState.createText();
+    console.log('hello')
 
     this.globalState.resetGame();
     this.gameOver = false;
 
     this.physics.add.collider(this.player, this.enemy, () => {
-      console.log('i have reached the bride');
     });
 
     this.physics.add.collider(this.player, this.flower, () => {
-      console.log('i have reached the flowers');
       this.scene.start('FlowerMiniGame');
     });
 
     this.physics.add.collider(this.player, this.cake, () => {
-      console.log('i have reached the cake');
       this.scene.start('CakeMiniGame');
 
     });
 
     this.physics.add.collider(this.player, this.shoes, () => {
-      console.log('i have reached the shoes');
       this.scene.start('ShoeMiniGame');
     });
     this.anims.create({
@@ -220,18 +207,15 @@ export default class GameScene extends Phaser.Scene {
 
   update(time, delta) {
     this.player.update();
-    // this.globalState.timer();
     this.globalState.update(time, delta);
-    this.setScoreText();
+    this.globalState.setScoreText();
     this.gameIsOver();
   }
 
-  setScoreText() {
-    this.text.setText('Time: ' + this.globalState.gameTime)
-  }
+
 
   gameIsOver() {
-    if (this.globalState.timer === 0) {
+    if (this.globalState.gameTime === 0) {
       this.gameOver = true;
     }
     if (this.gameOver) {

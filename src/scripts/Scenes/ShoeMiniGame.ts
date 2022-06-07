@@ -4,6 +4,7 @@ import { colors } from '../constants';
 
 export default class ShoeMiniGame extends Phaser.Scene {
   shoes;
+  globalState: any;
   colors = [colors.EerieBlack, colors.glossyGape, colors.LanguidLavendar, colors.blueSapphire, colors.naplesYellow, colors.pinkLavender, colors.coffee, colors.liver, colors.lightSlateGray, colors.cinnamonSatin, colors.bloodRed, colors.miniPink, colors.ashGray, colors.aeroBlue, colors.polishedPine]
   shoeL = [
     'shoeL00',
@@ -123,5 +124,8 @@ export default class ShoeMiniGame extends Phaser.Scene {
   }
 
 
-  update() { }
+  update() {
+    this.globalState.setScoreText();
+
+  }
 }
