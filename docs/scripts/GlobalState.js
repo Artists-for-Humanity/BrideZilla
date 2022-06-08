@@ -3,7 +3,7 @@ class GlobalState extends Phaser.Plugins.BasePlugin {
   constructor(pluginManager) {
     super(pluginManager);
     this.score = 0;
-    this.gameTime = 10;
+    this.gameTime = 30;
     this.activeTime = false;
     this.currentTime = 0;
     this.gameOver = false;
@@ -25,7 +25,7 @@ class GlobalState extends Phaser.Plugins.BasePlugin {
   }
   resetGame() {
     this.score = 0;
-    this.gameTime = 10;
+    this.gameTime = 30;
   }
   incrementScore() {
     this.score++;
