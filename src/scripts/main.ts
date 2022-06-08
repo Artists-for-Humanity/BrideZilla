@@ -26,7 +26,7 @@ const config = {
       debug: false,
     },
   },
-  scene: [FlowerMiniGame, MenuScene, GameScene, ShoeMiniGame, CakeMiniGame, GameOverScene],
+  scene: [MenuScene, GameScene, FlowerMiniGame, ShoeMiniGame, CakeMiniGame, GameOverScene],
   audio: {
     disableWebAudio: true,
   },
