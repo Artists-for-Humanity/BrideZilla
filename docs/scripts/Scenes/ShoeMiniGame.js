@@ -82,6 +82,7 @@ export default class ShoeMiniGame extends Phaser.Scene {
     const gameHeight = this.game.config.height;
     this.add.image(gameWidth / 2, gameHeight / 2, "ShoeMiniGame");
     this.shoes = this.physics.add.group();
+    this.createText();
     this.setImage();
     this.input.topOnly = false;
     this.input.on("drag", function(pointer, gameObject, dragX, dragY) {
@@ -103,6 +104,22 @@ export default class ShoeMiniGame extends Phaser.Scene {
       console.log(i);
     }
   }
-  update() {
+  createText() {
+    this.globalState.text = this.add.text(50, 50, "timer: ", {
+      fontFamily: "Luminari Regular",
+      fontSize: "30px",
+      align: "center",
+      fontStyle: "normal",
+      stroke: "#000000",
+      strokeThickness: 8,
+      shadow: {
+        blur: 42
+      }
+    });
+  }
+  update(time, delta) {
+    this.globalState.setScoreText();
+    this.globalState.update(time, delta);
+    this.globalState.gameIsOver();
   }
 }

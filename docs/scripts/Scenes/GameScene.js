@@ -8,7 +8,6 @@ export default class GameScene extends Phaser.Scene {
     super({
       key: "GameScene"
     });
-    this.gameOver = false;
   }
   preload() {
     this.load.image("player", new URL("../../assets/myplayer.png", import.meta.url).href);
@@ -45,7 +44,7 @@ export default class GameScene extends Phaser.Scene {
     this.add.image(gameWidth / 2, gameHeight / 2, "background");
     this.pedestal = this.physics.add.sprite(100, 440, "pedestal").setScale(2.5, 2.5).setImmovable(true);
     this.pedestal.setSize(90, 50);
-    this.cake = this.physics.add.sprite(1125, 500, "cake").setScale(1.2, 1.2).setImmovable(true);
+    this.cake = this.physics.add.sprite(1125, 500, "cake").setScale(0.7, 0.7).setImmovable(true);
     this.cake.setSize(100, 150);
     this.enemy = this.physics.add.sprite(120, 320, "enemy").setScale(0.3, 0.3).setImmovable(true);
     this.enemy.setSize(900, 850);
@@ -54,32 +53,18 @@ export default class GameScene extends Phaser.Scene {
     this.flower = this.physics.add.sprite(700, 650, "flower").setScale(1.4, 1.4).setImmovable(true);
     this.flower.setSize(70, 100);
     this.player = new Player(this, gameWidth / 2, gameHeight / 2);
-    this.text = this.add.text(50, 50, "timer: ", {
-      fontFamily: "Luminari Regular",
-      fontSize: "30px",
-      align: "center",
-      fontStyle: "normal",
-      stroke: "#000000",
-      strokeThickness: 8,
-      shadow: {
-        blur: 42
-      }
-    });
+    this.createText();
+    console.log("hello");
     this.globalState.resetGame();
-    this.gameOver = false;
     this.physics.add.collider(this.player, this.enemy, () => {
-      console.log("i have reached the bride");
     });
     this.physics.add.collider(this.player, this.flower, () => {
-      console.log("i have reached the flowers");
       this.scene.start("FlowerMiniGame");
     });
     this.physics.add.collider(this.player, this.cake, () => {
-      console.log("i have reached the cake");
       this.scene.start("CakeMiniGame");
     });
     this.physics.add.collider(this.player, this.shoes, () => {
-      console.log("i have reached the shoes");
       this.scene.start("ShoeMiniGame");
     });
     this.anims.create({
@@ -188,18 +173,20 @@ export default class GameScene extends Phaser.Scene {
   update(time, delta) {
     this.player.update();
     this.globalState.update(time, delta);
-    this.setScoreText();
-    this.gameIsOver();
+    this.globalState.setScoreText();
+    this.globalState.gameIsOver();
   }
-  setScoreText() {
-    this.text.setText("Time: " + this.globalState.gameTime);
-  }
-  gameIsOver() {
-    if (this.globalState.timer === 0) {
-      this.gameOver = true;
-    }
-    if (this.gameOver) {
-      this.scene.start("GameOverScene");
-    }
+  createText() {
+    this.globalState.text = this.add.text(50, 50, "timer: ", {
+      fontFamily: "Luminari Regular",
+      fontSize: "30px",
+      align: "center",
+      fontStyle: "normal",
+      stroke: "#000000",
+      strokeThickness: 8,
+      shadow: {
+        blur: 42
+      }
+    });
   }
 }
