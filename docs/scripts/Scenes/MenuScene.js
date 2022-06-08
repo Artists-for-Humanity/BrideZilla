@@ -15,6 +15,7 @@ export default class GameScene extends Phaser.Scene {
     const gameWidth = this.game.config.width;
     const gameHeight = this.game.config.height;
     this.add.image(gameWidth / 2, gameHeight / 2, "menuscreen");
+    console.log("hello");
     const textStyle = {
       fontFamily: "Space Mono",
       fontSize: "32px",

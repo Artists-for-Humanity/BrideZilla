@@ -15,7 +15,7 @@ class GlobalState extends Phaser.Plugins.BasePlugin {
             this.gameOver = true;
         }
         if (this.gameOver) {
-            // this.scene.start('GameOverScene');
+            this.resetGame();
             this.pluginManager.game.scene.start('GameOverScene');
         }
     }
@@ -35,7 +35,7 @@ class GlobalState extends Phaser.Plugins.BasePlugin {
     resetGame() {
         this.score = 0;
         this.gameTime = 30;
-        // console.log('global state works fine' + this.gameTime);
+        this.gameOver = false;
     }
 
     incrementScore() {
