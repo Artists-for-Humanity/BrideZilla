@@ -17,7 +17,8 @@
   },
   "include": [
     "**/*.ts",
-  ],
+    ".global.d.ts"
+, "src/scripts/main.js", "src/scripts/constants.js", "src/scripts/Sprites/Player.js", "src/scripts/Scenes/MenuScene.js", "src/scripts/Scenes/GameScene.js", "src/scripts/Scenes/GameScene.js"  ],
   "exclude": [
     "node_modules"
   ]
