@@ -1,11 +1,27 @@
 import Phaser from 'phaser';
 class GlobalState extends Phaser.Plugins.BasePlugin {
     score = 0;
-    gameTime = 30;
+    gameTime = 10;
     activeTime = false;
     currentTime = 0;
+    text;
+    gameOver = false;
     constructor(pluginManager) {
         super(pluginManager);
+    }
+
+    gameIsOver() {
+        if (this.gameTime === 0) {
+            this.gameOver = true;
+        }
+        if (this.gameOver) {
+            // this.scene.start('GameOverScene');
+            this.pluginManager.game.scene.start('GameOverScene');
+        }
+    }
+
+    setScoreText() {
+        this.text.setText('Time: ' + this.gameTime)
     }
 
     update(time, delta) {
@@ -18,7 +34,7 @@ class GlobalState extends Phaser.Plugins.BasePlugin {
 
     resetGame() {
         this.score = 0;
-        this.gameTime = 30;
+        this.gameTime = 10;
         // console.log('global state works fine' + this.gameTime);
     }
 
@@ -27,7 +43,6 @@ class GlobalState extends Phaser.Plugins.BasePlugin {
     }
 
     timer() {
-
         if (this.activeTime === false) {
 
             this.gameTime -= 1;
@@ -36,7 +51,6 @@ class GlobalState extends Phaser.Plugins.BasePlugin {
             this.incrementScore();
         }
         if (this.activeTime === true && this.currentTime > 1000) {
-
             this.currentTime -= 1000;
             this.activeTime = false;
         }

@@ -10,7 +10,7 @@ export default class GameOverScene extends Phaser.Scene {
   }
 
   preload() {
-    this.load.image('gameover', new URL('../../assets/GameOverscene.png', import.meta.url).href);
+    this.load.image('gameover', new URL('../../assets/Gameoverscene.png', import.meta.url).href);
     this.load.image('restart', new URL('../../assets/restartbutton.png', import.meta.url).href);
 
   }

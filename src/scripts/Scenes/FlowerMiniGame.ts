@@ -4,7 +4,7 @@ import Player from '../Sprites/Player';
 export default class FlowerMiniGame extends Phaser.Scene {
   flowerstem;
   flowerpetals;
-  // flowerpetal;
+  globalState: any;
   flowerbud;
   deadpetals;
   trashcan;
@@ -43,6 +43,7 @@ export default class FlowerMiniGame extends Phaser.Scene {
     this.trashcan = this.physics.add.sprite(225, 600, 'trashcan');
 
     this.setFlowerPetals();
+    this.createText();
     this.flowerbud = this.add.image(625, 290, 'flowerbud').setScale(1.3, 1.3);
 
     console.log(this.deadpetals)
@@ -85,7 +86,25 @@ export default class FlowerMiniGame extends Phaser.Scene {
   }
 
 
-  update() { }
+  update(time, delta) {
+    this.globalState.update(time, delta);
+    this.globalState.setScoreText();
+    this.globalState.gameIsOver();
+  }
+
+  createText() {
+    this.globalState.text = this.add.text(50, 50, 'timer: ', {
+      fontFamily: 'Luminari Regular',
+      fontSize: '30px',
+      align: 'center',
+      fontStyle: 'normal',
+      stroke: '#000000',
+      strokeThickness: 8,
+      shadow: {
+        blur: 42
+      }
+    });
+  }
 
 
   setFlowerPetals() {

@@ -4,6 +4,7 @@ import { colors } from '../constants';
 
 export default class ShoeMiniGame extends Phaser.Scene {
   shoes;
+  globalState: any;
   colors = [colors.EerieBlack, colors.glossyGape, colors.LanguidLavendar, colors.blueSapphire, colors.naplesYellow, colors.pinkLavender, colors.coffee, colors.liver, colors.lightSlateGray, colors.cinnamonSatin, colors.bloodRed, colors.miniPink, colors.ashGray, colors.aeroBlue, colors.polishedPine]
   shoeL = [
     'shoeL00',
@@ -92,6 +93,7 @@ export default class ShoeMiniGame extends Phaser.Scene {
     //310 and 950 for the sides of the box
     //450 and 
     this.shoes = this.physics.add.group()
+    this.createText();
 
     this.setImage();
 
@@ -122,6 +124,27 @@ export default class ShoeMiniGame extends Phaser.Scene {
     }
   }
 
+  createText() {
+    this.globalState.text = this.add.text(50, 50, 'timer: ', {
+      fontFamily: 'Luminari Regular',
+      fontSize: '30px',
+      align: 'center',
+      fontStyle: 'normal',
+      stroke: '#000000',
+      strokeThickness: 8,
+      shadow: {
+        blur: 42
+      }
+    });
+  }
 
-  update() { }
+
+  update(time, delta) {
+    this.globalState.setScoreText();
+    this.globalState.update(time, delta);
+    this.globalState.gameIsOver();
+
+
+
+  }
 }
