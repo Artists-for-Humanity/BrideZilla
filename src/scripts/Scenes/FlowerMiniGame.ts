@@ -4,9 +4,11 @@ import Player from '../Sprites/Player';
 export default class FlowerMiniGame extends Phaser.Scene {
   flowerstem;
   flowerpetals;
-  // flowerpetal;
+  globalState: any;
   flowerbud;
   numPetals = 5;
+  // gameOver = false;
+
   constructor() {
     super({
       key: 'FlowerMiniGame',
@@ -42,6 +44,7 @@ export default class FlowerMiniGame extends Phaser.Scene {
     // this.flowerpetals.input.draggable = true;
     console.log('I did not something ');
     // this.flowerpetals.setInteractive();
+    this.createText();
 
     this.flowerpetals.getChildren().forEach(function (petal) {
       // petal.setInteractive();
@@ -64,7 +67,25 @@ export default class FlowerMiniGame extends Phaser.Scene {
   }
 
 
-  update() { }
+  update(time, delta) {
+    this.globalState.update(time, delta);
+    this.globalState.setScoreText();
+    this.globalState.gameIsOver();
+  }
+
+  createText() {
+    this.globalState.text = this.add.text(50, 50, 'timer: ', {
+      fontFamily: 'Luminari Regular',
+      fontSize: '30px',
+      align: 'center',
+      fontStyle: 'normal',
+      stroke: '#000000',
+      strokeThickness: 8,
+      shadow: {
+        blur: 42
+      }
+    });
+  }
 
 
   setFlowerPetals() {

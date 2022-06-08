@@ -12,7 +12,7 @@ export default class GameScene extends Phaser.Scene {
   // text;
   // activeTime = false;
   // currentTime = 0;
-  gameOver = false;
+  // gameOver = false;
   globalState: any;
 
   constructor() {
@@ -69,7 +69,7 @@ export default class GameScene extends Phaser.Scene {
     this.add.image(gameWidth / 2, gameHeight / 2, 'background');
     this.pedestal = this.physics.add.sprite(100, 440, 'pedestal').setScale(2.5, 2.5).setImmovable(true);
     this.pedestal.setSize(90, 50);
-    this.cake = this.physics.add.sprite(1125, 500, 'cake').setScale(1.2, 1.2).setImmovable(true);
+    this.cake = this.physics.add.sprite(1125, 500, 'cake').setScale(.7, .7).setImmovable(true);
     this.cake.setSize(100, 150);
     this.enemy = this.physics.add.sprite(120, 320, 'enemy').setScale(.3, .3).setImmovable(true);
     this.enemy.setSize(900, 850);
@@ -80,11 +80,11 @@ export default class GameScene extends Phaser.Scene {
 
     this.player = new Player(this, gameWidth / 2, gameHeight / 2);
 
-    this.globalState.createText();
+    this.createText();
     console.log('hello')
 
     this.globalState.resetGame();
-    this.gameOver = false;
+    // this.gameOver = false;
 
     this.physics.add.collider(this.player, this.enemy, () => {
     });
@@ -209,17 +209,31 @@ export default class GameScene extends Phaser.Scene {
     this.player.update();
     this.globalState.update(time, delta);
     this.globalState.setScoreText();
-    this.gameIsOver();
+    this.globalState.gameIsOver();
   }
 
 
+  // gameIsOver() {
+  //   if (this.globalState.gameTime === 0) {
+  //     this.gameOver = true;
+  //   }
+  //   if (this.gameOver) {
+  //     this.scene.start('GameOverScene');
+  //   }
+  // }
 
-  gameIsOver() {
-    if (this.globalState.gameTime === 0) {
-      this.gameOver = true;
-    }
-    if (this.gameOver) {
-      this.scene.start('GameOverScene');
-    }
+
+  createText() {
+    this.globalState.text = this.add.text(50, 50, 'timer: ', {
+      fontFamily: 'Luminari Regular',
+      fontSize: '30px',
+      align: 'center',
+      fontStyle: 'normal',
+      stroke: '#000000',
+      strokeThickness: 8,
+      shadow: {
+        blur: 42
+      }
+    });
   }
 }

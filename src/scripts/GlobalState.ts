@@ -5,22 +5,19 @@ class GlobalState extends Phaser.Plugins.BasePlugin {
     activeTime = false;
     currentTime = 0;
     text;
+    gameOver = false;
     constructor(pluginManager) {
         super(pluginManager);
     }
 
-    createText() {
-        this.text = this.add.text(50, 50, 'timer: ', {
-            fontFamily: 'Luminari Regular',
-            fontSize: '30px',
-            align: 'center',
-            fontStyle: 'normal',
-            stroke: '#000000',
-            strokeThickness: 8,
-            shadow: {
-                blur: 42
-            }
-        });
+    gameIsOver() {
+        if (this.gameTime === 0) {
+            this.gameOver = true;
+        }
+        if (this.gameOver) {
+            // this.scene.start('GameOverScene');
+            this.pluginManager.game.scene.start('GameOverScene');
+        }
     }
 
     setScoreText() {
