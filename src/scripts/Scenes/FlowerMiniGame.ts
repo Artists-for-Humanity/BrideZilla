@@ -7,7 +7,9 @@ export default class FlowerMiniGame extends Phaser.Scene {
   // flowerpetal;
   flowerbud;
   deadpetals;
+  trashcan;
   numPetals = 5;
+  removedpetals = 0;
   constructor() {
     super({
       key: 'FlowerMiniGame',
@@ -24,6 +26,8 @@ export default class FlowerMiniGame extends Phaser.Scene {
       import.meta.url).href);
     this.load.image('deadpetal', new URL('../../assets/deadpetal.png',
       import.meta.url).href);
+    this.load.image('trashcan', new URL('../../assets/trashcan.png',
+      import.meta.url).href);
 
 
 
@@ -36,23 +40,37 @@ export default class FlowerMiniGame extends Phaser.Scene {
     this.add.image(gameWidth / 2, gameHeight / 2, 'flowerMiniGame');
     this.flowerpetals = this.physics.add.group();
     this.deadpetals = this.physics.add.group();
+    this.trashcan = this.physics.add.sprite(225, 600, 'trashcan');
+
     this.setFlowerPetals();
-    //this.load.image('stem', new URL('../../assets/stem.png', import.meta.url).href);
-    // this.flowerpetal = this.add.image(640, 250, 'petal').setScale(.2, .2);
     this.flowerbud = this.add.image(625, 290, 'flowerbud').setScale(1.3, 1.3);
-    // this.flowerpetal.rotation += 1;
-    console.log(this.flowerpetals);
-    // this.input.setDraggable(this.flowerpetals);
-    // this.flowerpetals.input.draggable = true;
-    console.log('I did not something ');
-    // this.flowerpetals.setInteractive();
+
+    console.log(this.deadpetals)
+
+    this.deadpetals.getChildren().forEach((deadpetal) => {
+      this.physics.add.collider(this.trashcan, deadpetal, () => {
+        deadpetal.destroy();
+        this.removedpetals += 1;
+        console.log(this.removedpetals);
+
+        // if (this.removedpetals === 1) {
+        //   this.scene.start('Gamescene');
+        // }
+      });
+    });
+
+
+    this.physics.add.collider(this.trashcan, this.deadpetals, () => {
+      console.log('i have reached the trashcan');
+      // this.scene.start('FlowerMiniGame');
+    });
 
     this.flowerpetals.getChildren().forEach(function (petal) {
-      console.log(petal);
+      // console.log(petal);
       petal.setInteractive({ draggable: true });
     });
     this.deadpetals.getChildren().forEach(function (petal) {
-      console.log(petal);
+      // console.log(petal);
       petal.setInteractive({ draggable: true });
     });
     this.input.on('drag', function (pointer, gameObject, dragX, dragY) {
@@ -79,7 +97,6 @@ export default class FlowerMiniGame extends Phaser.Scene {
     for (let i = 0; i < this.numPetals; i++) {
 
       if (i === 1) {
-        console.log('hey 00: ' + x1 + ' ' + y1, i);
         r = 2;
         x1 += 50;
         y1 += 35;
@@ -88,7 +105,6 @@ export default class FlowerMiniGame extends Phaser.Scene {
       }
 
       if (i === 2) {
-        console.log('hey 01', x1, y1, i);
         r = 3;
         x1 -= 15;
         y1 += 50;
@@ -97,21 +113,19 @@ export default class FlowerMiniGame extends Phaser.Scene {
 
       }
       if (i === 3) {
-        console.log('hey 02', x1, y1, i);
         r = 4.5;
         x1 -= 50;
         y1 -= 5;
-        x2 += 90;
-        y2 += 100;
+        x2 += 100;
+        y2 += 65;
 
       }
       if (i === 4) {
-        console.log('hey 03', x1, y1, i);
         r = 6;
         x1 -= 20;
         y1 -= 50;
-        x2 -= 20;
-        y2 += 80;
+        x2 += 5;
+        y2 += 100;
       }
       this.flowerpetals.create(x1, y1, 'petal').setScale(2.5, 2.5).rotation += r;
       this.deadpetals.create(x2, y2, 'deadpetal').setScale(.9, .9).rotation += r;
