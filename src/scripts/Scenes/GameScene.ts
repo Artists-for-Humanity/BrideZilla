@@ -72,19 +72,18 @@ export default class GameScene extends Phaser.Scene {
     this.cake = this.physics.add.sprite(1125, 500, 'cake').setScale(.7, .7).setImmovable(true);
     this.cake.setSize(100, 150);
     this.enemy = this.physics.add.sprite(120, 320, 'enemy').setScale(.3, .3).setImmovable(true);
-    this.enemy.setSize(900, 850);
+    this.enemy.setSize(450, 850);
     this.shoes = this.physics.add.sprite(650, 100, 'shoes').setScale(0.7).setImmovable(true);
     this.shoes.setSize(90, 90);
     this.flower = this.physics.add.sprite(700, 650, 'flower').setScale(1.4, 1.4).setImmovable(true);
     this.flower.setSize(70, 100);
 
     this.player = new Player(this, gameWidth / 2, gameHeight / 2);
+    this.player.setSize(300, 550);
 
     this.createText();
-    console.log('hello')
 
     this.globalState.resetGame();
-    // this.gameOver = false;
 
     this.physics.add.collider(this.player, this.enemy, () => {
     });
@@ -211,17 +210,6 @@ export default class GameScene extends Phaser.Scene {
     this.globalState.setScoreText();
     this.globalState.gameIsOver();
   }
-
-
-  // gameIsOver() {
-  //   if (this.globalState.gameTime === 0) {
-  //     this.gameOver = true;
-  //   }
-  //   if (this.gameOver) {
-  //     this.scene.start('GameOverScene');
-  //   }
-  // }
-
 
   createText() {
     this.globalState.text = this.add.text(50, 50, 'timer: ', {

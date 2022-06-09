@@ -18,13 +18,14 @@ export default class GameScene extends Phaser.Scene {
     const gameWidth: number = this.game.config.width as number;
     const gameHeight: number = this.game.config.height as number;
     this.add.image(gameWidth / 2, gameHeight / 2, 'menuscreen');
-    console.log('hello')
+    console.log('helloo')
     const textStyle = {
       fontFamily: 'Space Mono',
       fontSize: '32px',
       fontStyle: 'bold',
       fill: colors.white,
       align: 'center',
+
     }
     this.start = this.add.image(gameWidth - 910, gameHeight - 365, 'start').setScale(.68, .5);
     this.start.setInteractive();
