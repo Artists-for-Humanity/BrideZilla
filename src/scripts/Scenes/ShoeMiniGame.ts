@@ -98,6 +98,7 @@ export default class ShoeMiniGame extends Phaser.Scene {
     this.setImage();
 
     this.input.topOnly = false;
+    console.log('hello')
 
     this.input.on('drag', function (pointer, gameObject, dragX, dragY) {
 
