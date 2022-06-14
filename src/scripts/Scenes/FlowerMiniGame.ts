@@ -46,13 +46,11 @@ export default class FlowerMiniGame extends Phaser.Scene {
     this.createText();
     this.flowerbud = this.add.image(625, 290, 'flowerbud').setScale(1.3, 1.3);
 
-    console.log(this.deadpetals)
 
     this.deadpetals.getChildren().forEach((deadpetal) => {
       this.physics.add.collider(this.trashcan, deadpetal, () => {
         deadpetal.destroy();
         this.removedpetals += 1;
-        console.log(this.removedpetals);
 
         // if (this.removedpetals === 1) {
         //   this.scene.start('Gamescene');
@@ -63,15 +61,12 @@ export default class FlowerMiniGame extends Phaser.Scene {
 
     this.physics.add.collider(this.trashcan, this.deadpetals, () => {
       console.log('i have reached the trashcan');
-      // this.scene.start('FlowerMiniGame');
     });
 
     this.flowerpetals.getChildren().forEach(function (petal) {
-      // console.log(petal);
       petal.setInteractive({ draggable: true });
     });
     this.deadpetals.getChildren().forEach(function (petal) {
-      // console.log(petal);
       petal.setInteractive({ draggable: true });
     });
     this.input.on('drag', function (pointer, gameObject, dragX, dragY) {

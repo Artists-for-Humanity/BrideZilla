@@ -1,6 +1,6 @@
 import Phaser from 'phaser';
-import WebFont from 'webfontloader';
-import { colors } from '../constants';
+// import WebFont from 'webfontloader';
+// import { colors } from '../constants';
 
 export default class GameScene extends Phaser.Scene {
   start;
@@ -19,14 +19,14 @@ export default class GameScene extends Phaser.Scene {
     const gameHeight: number = this.game.config.height as number;
     this.add.image(gameWidth / 2, gameHeight / 2, 'menuscreen');
     console.log('helloo')
-    const textStyle = {
-      fontFamily: 'Space Mono',
-      fontSize: '32px',
-      fontStyle: 'bold',
-      fill: colors.white,
-      align: 'center',
+    // const textStyle = {
+    //   fontFamily: 'Space Mono',
+    //   fontSize: '32px',
+    //   fontStyle: 'bold',
+    //   fill: colors.white,
+    //   align: 'center',
 
-    }
+    // }
     this.start = this.add.image(gameWidth - 910, gameHeight - 365, 'start').setScale(.68, .5);
     this.start.setInteractive();
     this.start.on('pointerdown', () => {

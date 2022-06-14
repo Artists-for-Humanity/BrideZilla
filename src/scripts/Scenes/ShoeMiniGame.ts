@@ -98,7 +98,7 @@ export default class ShoeMiniGame extends Phaser.Scene {
     this.setImage();
 
     this.input.topOnly = false;
-    console.log('hello')
+    // console.log('hello')
 
     this.input.on('drag', function (pointer, gameObject, dragX, dragY) {
 
@@ -121,7 +121,6 @@ export default class ShoeMiniGame extends Phaser.Scene {
 
       this.shoes.create(Phaser.Math.Between(310, 950), Phaser.Math.Between(450, 610), this.shoeL[i]).setScale(1, 1).setTint(this.colors[i]);
       this.shoes.create(Phaser.Math.Between(310, 950), Phaser.Math.Between(450, 610), this.shoeR[i]).setScale(1, 1).setTint(this.colors[i]);
-      console.log(i)
     }
   }
 

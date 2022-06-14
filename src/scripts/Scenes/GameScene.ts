@@ -78,8 +78,7 @@ export default class GameScene extends Phaser.Scene {
     this.flower = this.physics.add.sprite(700, 650, 'flower').setScale(1.4, 1.4).setImmovable(true);
     this.flower.setSize(70, 100);
 
-    this.player = new Player(this, gameWidth / 2, gameHeight / 2);
-    this.player.setSize(300, 550);
+    this.setPlayer(gameWidth, gameHeight);
 
     this.createText();
 
@@ -209,6 +208,13 @@ export default class GameScene extends Phaser.Scene {
     this.globalState.update(time, delta);
     this.globalState.setScoreText();
     this.globalState.gameIsOver();
+    console.log('Player Position = (' + this.player.x + ', ' + this.player.y + ')');
+
+  }
+
+  setPlayer(gameWidth, gameHeight) {
+    this.player = new Player(this, gameWidth / 2, gameHeight / 2);
+    this.player.setSize(300, 550);
   }
 
   createText() {
