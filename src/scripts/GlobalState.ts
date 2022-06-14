@@ -1,7 +1,7 @@
 import Phaser from 'phaser';
 class GlobalState extends Phaser.Plugins.BasePlugin {
     score = 0;
-    gameTime = 5;
+    gameTime = 10;
     activeTime = false;
     currentTime = 0;
     text;
@@ -34,7 +34,7 @@ class GlobalState extends Phaser.Plugins.BasePlugin {
 
     resetGame() {
         this.score = 0;
-        this.gameTime = 5;
+        this.gameTime = 10;
         this.gameOver = false;
     }
 

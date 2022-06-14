@@ -70,7 +70,7 @@ export default class GameScene extends Phaser.Scene {
     this.pedestal = this.physics.add.sprite(100, 440, 'pedestal').setScale(2.5, 2.5).setImmovable(true);
     this.pedestal.setSize(90, 50);
     this.cake = this.physics.add.sprite(1125, 500, 'cake').setScale(.7, .7).setImmovable(true);
-    this.cake.setSize(100, 150);
+    this.cake.setSize(200, 200);
     this.enemy = this.physics.add.sprite(120, 320, 'enemy').setScale(.3, .3).setImmovable(true);
     this.enemy.setSize(450, 850);
     this.shoes = this.physics.add.sprite(650, 100, 'shoes').setScale(0.7).setImmovable(true);
