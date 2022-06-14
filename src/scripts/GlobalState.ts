@@ -34,7 +34,7 @@ class GlobalState extends Phaser.Plugins.BasePlugin {
 
     resetGame() {
         this.score = 0;
-        this.gameTime = 5;
+        this.gameTime = 60;
         this.gameOver = false;
     }
 
