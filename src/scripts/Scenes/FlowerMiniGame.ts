@@ -40,7 +40,7 @@ export default class FlowerMiniGame extends Phaser.Scene {
     this.add.image(gameWidth / 2, gameHeight / 2, 'flowerMiniGame');
     this.flowerpetals = this.physics.add.group();
     this.deadpetals = this.physics.add.group();
-    this.trashcan = this.physics.add.sprite(225, 600, 'trashcan');
+    this.trashcan = this.physics.add.sprite(210, 600, 'trashcan');
 
     this.setFlowerPetals();
     this.createText();

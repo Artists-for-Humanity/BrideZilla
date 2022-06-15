@@ -19,7 +19,7 @@ export default class GameOverScene extends Phaser.Scene {
     const gameWidth: number = this.game.config.width as number;
     const gameHeight: number = this.game.config.height as number;
     this.add.image(gameWidth / 2, gameHeight / 2, 'gameover');
-    this.restart = this.add.image(gameWidth - 776, gameHeight - 100, 'restart').setScale(.5, .5);
+    this.restart = this.add.image(gameWidth - 776, gameHeight - 402, 'restart').setScale(.5, .5);
     // this.restart = this.add.button(gameWidth - 776, gameHeight - 402, 'button', this.actionOnClick(), this, 2, 1, 0);
     this.restart.setInteractive();
     this.restart.on('pointerdown', () => {
