@@ -1,4 +1,5 @@
 import Phaser from 'phaser';
+
 class GlobalState extends Phaser.Plugins.BasePlugin {
     score = 0;
     gameTime = 5;
@@ -10,13 +11,13 @@ class GlobalState extends Phaser.Plugins.BasePlugin {
         super(pluginManager);
     }
 
-    gameIsOver() {
+    gameIsOver(scene: Phaser.Scenes.ScenePlugin) {
         if (this.gameTime === 0) {
             this.gameOver = true;
         }
         if (this.gameOver) {
             this.resetGame();
-            this.pluginManager.game.scene.start('GameOverScene');
+            scene.start('GameOverScene');
         }
     }
 

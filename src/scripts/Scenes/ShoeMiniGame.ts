@@ -142,7 +142,7 @@ export default class ShoeMiniGame extends Phaser.Scene {
   update(time, delta) {
     this.globalState.setScoreText();
     this.globalState.update(time, delta);
-    this.globalState.gameIsOver();
+    this.globalState.gameIsOver(this.scene);
 
 
 
