@@ -13,6 +13,7 @@ export default class GameOverScene extends Phaser.Scene {
     this.load.image("restart", new URL("../../assets/restartbutton.png", import.meta.url).href);
   }
   create() {
+    console.log('hello');
     const gameWidth = this.game.config.width;
     const gameHeight = this.game.config.height;
     this.add.image(gameWidth / 2, gameHeight / 2, "gameover");
