@@ -2,7 +2,7 @@ import Phaser from 'phaser';
 
 class GlobalState extends Phaser.Plugins.BasePlugin {
     score = 0;
-    gameTime = 5;
+    gameTime = 20;
     activeTime = false;
     currentTime = 0;
     text;
@@ -15,6 +15,7 @@ class GlobalState extends Phaser.Plugins.BasePlugin {
         if (this.gameTime === 0) {
             this.gameOver = true;
         }
+        // console.log('im working')
         if (this.gameOver) {
             this.resetGame();
             scene.start('GameOverScene');
@@ -35,7 +36,7 @@ class GlobalState extends Phaser.Plugins.BasePlugin {
 
     resetGame() {
         this.score = 0;
-        this.gameTime = 5;
+        this.gameTime = 20;
         this.gameOver = false;
     }
 
