@@ -19,6 +19,7 @@ export default class GameScene extends Phaser.Scene {
     const gameWidth: number = this.game.config.width as number;
     const gameHeight: number = this.game.config.height as number;
     this.add.image(gameWidth / 2, gameHeight / 2, 'menuscreen');
+<<<<<<< HEAD
     console.log('helloo 00')
 
     // this.start = this.add.image(gameWidth - 910, gameHeight - 365, 'start').setScale(.68, .5);
@@ -46,5 +47,21 @@ export default class GameScene extends Phaser.Scene {
     this.graphics.lineStyle(1, 0xff0000);
     this.graphics.strokeRectShape(this.startBounds);
 
+=======
+    // console.log('helloo there')
+    // const textStyle = {
+    //   fontFamily: 'Space Mono',
+    //   fontSize: '32px',
+    //   fontStyle: 'bold',
+    //   fill: colors.white,
+    //   align: 'center',
+
+    // }
+    this.start = this.add.image(gameWidth - 910, gameHeight - 365, 'start').setScale(.68, .5);
+    this.start.setInteractive();
+    this.start.on('pointerdown', () => {
+      this.scene.start('GameScene');
+    });
+>>>>>>> ea555eda66676f6d237bd5f11c13eff641e63d77
   }
 }

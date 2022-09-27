@@ -207,10 +207,15 @@ export default class GameScene extends Phaser.Scene {
     this.player.update();
     this.globalState.update(time, delta);
     this.globalState.setScoreText();
+<<<<<<< HEAD
     this.globalState.gameIsOver();
     this.globalState.timer();
 
     console.log('Player Position = (' + this.player.x + ', ' + this.player.y + ')');
+=======
+    this.globalState.gameIsOver(this.scene);
+    // console.log('Player Position = (' + this.player.x + ', ' + this.player.y + ')');
+>>>>>>> ea555eda66676f6d237bd5f11c13eff641e63d77
 
   }
 

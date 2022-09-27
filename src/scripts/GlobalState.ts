@@ -1,7 +1,12 @@
 import Phaser from 'phaser';
+
 class GlobalState extends Phaser.Plugins.BasePlugin {
     score = 0;
+<<<<<<< HEAD
     gameTime;
+=======
+    gameTime = 20;
+>>>>>>> ea555eda66676f6d237bd5f11c13eff641e63d77
     activeTime = false;
     currentTime = 0;
     text;
@@ -11,13 +16,14 @@ class GlobalState extends Phaser.Plugins.BasePlugin {
         this.resetGame();
     }
 
-    gameIsOver() {
+    gameIsOver(scene: Phaser.Scenes.ScenePlugin) {
         if (this.gameTime === 0) {
             this.gameOver = true;
         }
+        // console.log('im working')
         if (this.gameOver) {
             this.resetGame();
-            this.pluginManager.game.scene.start('GameOverScene');
+            scene.start('GameOverScene');
         }
     }
 
@@ -38,7 +44,11 @@ class GlobalState extends Phaser.Plugins.BasePlugin {
 
     resetGame() {
         this.score = 0;
+<<<<<<< HEAD
         this.gameTime = 3;
+=======
+        this.gameTime = 20;
+>>>>>>> ea555eda66676f6d237bd5f11c13eff641e63d77
         this.gameOver = false;
     }
 
