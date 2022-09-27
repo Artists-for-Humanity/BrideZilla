@@ -1,13 +1,14 @@
 import Phaser from 'phaser';
 class GlobalState extends Phaser.Plugins.BasePlugin {
     score = 0;
-    gameTime = 5;
+    gameTime;
     activeTime = false;
     currentTime = 0;
     text;
     gameOver = false;
     constructor(pluginManager) {
         super(pluginManager);
+        this.resetGame();
     }
 
     gameIsOver() {
@@ -28,13 +29,16 @@ class GlobalState extends Phaser.Plugins.BasePlugin {
         // console.log('reach me');
         this.currentTime += delta;
         // console.log(this.currentTime);
-        this.timer()
+        console.log(this.gameOver);
+        if (!this.gameOver) {
+            this.timer();
+        }
 
     }
 
     resetGame() {
         this.score = 0;
-        this.gameTime = 5;
+        this.gameTime = 3;
         this.gameOver = false;
     }
 

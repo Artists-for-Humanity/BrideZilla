@@ -2,6 +2,8 @@ import Phaser from 'phaser';
 
 export default class GameOverScene extends Phaser.Scene {
   restart;
+  globalState: any;
+
   constructor() {
     super({
       key: 'GameOverScene',
@@ -22,9 +24,12 @@ export default class GameOverScene extends Phaser.Scene {
     // this.restart = this.add.button(gameWidth - 776, gameHeight - 402, 'button', this.actionOnClick(), this, 2, 1, 0);
     this.restart.setInteractive();
     this.restart.on('pointerdown', () => {
+      this.globalState.resetGame();
+
       this.scene.start('MenuScene');
 
     });
+
   }
 
   // actionOnClick() {

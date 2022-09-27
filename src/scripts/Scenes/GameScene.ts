@@ -82,7 +82,7 @@ export default class GameScene extends Phaser.Scene {
 
     this.createText();
 
-    this.globalState.resetGame();
+    // this.globalState.resetGame();
 
     this.physics.add.collider(this.player, this.enemy, () => {
     });
@@ -208,6 +208,8 @@ export default class GameScene extends Phaser.Scene {
     this.globalState.update(time, delta);
     this.globalState.setScoreText();
     this.globalState.gameIsOver();
+    this.globalState.timer();
+
     console.log('Player Position = (' + this.player.x + ', ' + this.player.y + ')');
 
   }

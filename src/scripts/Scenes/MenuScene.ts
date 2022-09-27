@@ -1,9 +1,10 @@
 import Phaser from 'phaser';
-// import WebFont from 'webfontloader';
-// import { colors } from '../constants';
 
 export default class GameScene extends Phaser.Scene {
   start;
+  graphics
+  startBounds;
+
   constructor() {
     super({ key: 'MenuScene' });
   }
@@ -18,19 +19,32 @@ export default class GameScene extends Phaser.Scene {
     const gameWidth: number = this.game.config.width as number;
     const gameHeight: number = this.game.config.height as number;
     this.add.image(gameWidth / 2, gameHeight / 2, 'menuscreen');
-    console.log('helloo')
-    // const textStyle = {
-    //   fontFamily: 'Space Mono',
-    //   fontSize: '32px',
-    //   fontStyle: 'bold',
-    //   fill: colors.white,
-    //   align: 'center',
+    console.log('helloo 00')
 
-    // }
-    this.start = this.add.image(gameWidth - 910, gameHeight - 365, 'start').setScale(.68, .5);
-    this.start.setInteractive();
-    this.start.on('pointerdown', () => {
-      this.scene.start('GameScene');
-    });
+    // this.start = this.add.image(gameWidth - 910, gameHeight - 365, 'start').setScale(.68, .5);
+    const start = this.add.image(gameWidth - 910, gameHeight - 365, 'start').setScale(.68, .5).setInteractive({ useHandCursor: true })
+      .on('pointerdown', () => {
+        // this.scene.start('GameScene');
+        console.log('helloo 01')
+
+      })
+
+    // this.start.setInteractive();
+    // this.start.on('pointerdown', () => {
+    //   this.scene.start('GameScene');
+    //   console.log('helloo 01')
+    // });
+
+    this.graphics = this.add.graphics();
+    this.startBounds = start.getBounds();
+
+
+  }
+
+  update() {
+    // this.start.rotation += 0.013;
+    this.graphics.lineStyle(1, 0xff0000);
+    this.graphics.strokeRectShape(this.startBounds);
+
   }
 }
