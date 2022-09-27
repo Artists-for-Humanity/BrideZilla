@@ -70,11 +70,16 @@ export default class FlowerMiniGame extends Phaser.Scene {
       petal.setInteractive({ draggable: true });
     });
     this.input.on('drag', function (pointer, gameObject, dragX, dragY) {
+      console.log('reachme 00');
+
 
       gameObject.x = dragX;
       gameObject.y = dragY;
+      console.log('reachme 01');
+
 
     });
+    console.log('reachme 02');
 
 
 
@@ -84,7 +89,7 @@ export default class FlowerMiniGame extends Phaser.Scene {
   update(time, delta) {
     this.globalState.update(time, delta);
     this.globalState.setScoreText();
-    this.globalState.gameIsOver();
+    this.globalState.gameIsOver(this.scene);
   }
 
   createText() {
